@@ -560,14 +560,14 @@ export default function ProcurementPage() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2.5">
-              <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                 Procurement Management
               </h1>
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-cyan-50 text-cyan-800 border border-cyan-200">
                 Supply Chain & SQA
               </span>
             </div>
-            <p className="text-sm text-slate-400 mt-1">
+            <p className="text-sm text-slate-600 font-medium mt-1">
               Manage suppliers, purchase requests, purchase orders and material procurement.
             </p>
           </div>
@@ -577,18 +577,18 @@ export default function ProcurementPage() {
             <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 text-xs font-semibold transition-all shadow-xs cursor-pointer"
               title="Refresh procurement feeds"
             >
-              <RefreshCw className={`w-3.5 h-3.5 text-cyan-400 ${isRefreshing ? "animate-spin" : ""}`} />
+              <RefreshCw className={`w-3.5 h-3.5 text-cyan-600 ${isRefreshing ? "animate-spin" : ""}`} />
               <span>{isRefreshing ? "Syncing..." : "Sync Feeds"}</span>
             </button>
 
             <button
               onClick={() => setIsNewPrModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-semibold transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs font-bold transition-all shadow-xs cursor-pointer"
             >
-              <FilePlus className="w-4 h-4" />
+              <FilePlus className="w-4 h-4 text-cyan-600" />
               <span>+ New Request</span>
             </button>
 
@@ -597,9 +597,9 @@ export default function ProcurementPage() {
                 setPrToConvert(null);
                 setIsCreatePoModalOpen(true);
               }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 text-xs font-bold transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white text-xs font-bold transition-all shadow-md shadow-emerald-600/20 active:scale-95 cursor-pointer"
             >
-              <Plus className="w-4 h-4" />
+              <Plus className="w-4 h-4 text-white" />
               <span>+ Create PO</span>
             </button>
           </div>
@@ -631,13 +631,13 @@ export default function ProcurementPage() {
         <ProcurementSpendChart data={PROCUREMENT_SPEND_6_MONTHS} />
 
         {/* SECTION TABS */}
-        <div id="procurement-tabs-section" className="flex items-center gap-2 border-b border-slate-800 pb-2 overflow-x-auto text-xs font-semibold scroll-mt-24">
+        <div id="procurement-tabs-section" className="flex items-center gap-2 border-b border-slate-200 pb-2 overflow-x-auto text-xs font-semibold scroll-mt-24">
           <button
             onClick={() => setActiveTab("orders")}
-            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 whitespace-nowrap ${
+            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer ${
               activeTab === "orders"
-                ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
-                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                ? "bg-cyan-600 text-white font-bold shadow-md shadow-cyan-600/20"
+                : "bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:bg-slate-50"
             }`}
           >
             <ShoppingCart className="w-4 h-4" />
@@ -646,10 +646,10 @@ export default function ProcurementPage() {
 
           <button
             onClick={() => setActiveTab("requests")}
-            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 whitespace-nowrap ${
+            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer ${
               activeTab === "requests"
-                ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
-                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                ? "bg-cyan-600 text-white font-bold shadow-md shadow-cyan-600/20"
+                : "bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:bg-slate-50"
             }`}
           >
             <FilePlus className="w-4 h-4" />
@@ -658,10 +658,10 @@ export default function ProcurementPage() {
 
           <button
             onClick={() => setActiveTab("suppliers")}
-            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 whitespace-nowrap ${
+            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer ${
               activeTab === "suppliers"
-                ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
-                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                ? "bg-cyan-600 text-white font-bold shadow-md shadow-cyan-600/20"
+                : "bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:bg-slate-50"
             }`}
           >
             <Users className="w-4 h-4" />
@@ -670,10 +670,10 @@ export default function ProcurementPage() {
 
           <button
             onClick={() => setActiveTab("analytics")}
-            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 whitespace-nowrap ${
+            className={`px-4 py-2 rounded-lg transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer ${
               activeTab === "analytics"
-                ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
-                : "bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
+                ? "bg-cyan-600 text-white font-bold shadow-md shadow-cyan-600/20"
+                : "bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:bg-slate-50"
             }`}
           >
             <Layers className="w-4 h-4" />

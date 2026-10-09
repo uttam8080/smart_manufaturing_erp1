@@ -28,54 +28,54 @@ export function MaintenanceAlerts({
       case "Critical":
         return {
           icon: AlertOctagon,
-          badgeClass: "bg-rose-500/15 text-rose-400 border border-rose-500/30",
-          cardBorder: "border-rose-500/40 hover:border-rose-500/60 bg-rose-950/10",
+          badgeClass: "bg-rose-50 text-rose-800 border border-rose-200",
+          cardBorder: "border-rose-300 bg-rose-50/40 hover:bg-rose-50/70",
         };
       case "High":
         return {
           icon: AlertTriangle,
-          badgeClass: "bg-amber-500/15 text-amber-400 border border-amber-500/30",
-          cardBorder: "border-amber-500/40 hover:border-amber-500/60 bg-amber-950/10",
+          badgeClass: "bg-amber-50 text-amber-800 border border-amber-200",
+          cardBorder: "border-amber-300 bg-amber-50/40 hover:bg-amber-50/70",
         };
       case "Medium":
         return {
           icon: AlertTriangle,
-          badgeClass: "bg-yellow-500/15 text-yellow-400 border border-yellow-500/30",
-          cardBorder: "border-yellow-500/30 hover:border-yellow-500/50 bg-yellow-950/5",
+          badgeClass: "bg-yellow-50 text-yellow-800 border border-yellow-200",
+          cardBorder: "border-yellow-300 bg-yellow-50/40 hover:bg-yellow-50/70",
         };
       case "Low":
       default:
         return {
           icon: Info,
-          badgeClass: "bg-cyan-500/15 text-cyan-400 border border-cyan-500/30",
-          cardBorder: "border-cyan-500/30 hover:border-cyan-500/50 bg-cyan-950/5",
+          badgeClass: "bg-cyan-50 text-cyan-800 border border-cyan-200",
+          cardBorder: "border-cyan-300 bg-cyan-50/40 hover:bg-cyan-50/70",
         };
     }
   };
 
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/70 backdrop-blur-md p-5 sm:p-6">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 sm:p-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800/80 mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200 mb-5">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400">
+          <div className="p-2 rounded-xl bg-amber-50 border border-amber-200 text-amber-600">
             <AlertTriangle className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-lg font-bold text-white tracking-tight">Maintenance Alerts</h3>
-              <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              <h3 className="text-lg font-bold text-slate-900 tracking-tight">Maintenance Alerts</h3>
+              <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-100 text-amber-900 border border-amber-300">
                 {alerts.length} Active
               </span>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-600 font-medium">
               Automated anomaly detection triggers and impending PM service intervals
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 text-xs text-slate-400 bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200">
+          <Sparkles className="w-3.5 h-3.5 text-cyan-600" />
           <span>Real-time ML Telemetry Monitor</span>
         </div>
       </div>
@@ -89,14 +89,14 @@ export function MaintenanceAlerts({
           return (
             <div
               key={alert.id}
-              className={`rounded-lg border p-4 transition-all duration-200 ${config.cardBorder}`}
+              className={`rounded-xl border p-4 transition-all duration-200 ${config.cardBorder}`}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                 {/* Left side: Severity, Machine info, Reason */}
                 <div className="flex items-start gap-3 flex-1 min-w-0">
                   <div className="mt-0.5">
                     <span
-                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-semibold ${config.badgeClass}`}
+                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold ${config.badgeClass}`}
                     >
                       <Icon className="w-3.5 h-3.5" />
                       {alert.severity}
@@ -105,25 +105,25 @@ export function MaintenanceAlerts({
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <span className="font-semibold text-white text-sm">
+                      <span className="font-bold text-slate-900 text-sm">
                         {alert.machineName}
                       </span>
-                      <span className="text-xs font-mono text-cyan-400 bg-cyan-950/40 px-1.5 py-0.5 rounded border border-cyan-800/40">
+                      <span className="text-xs font-mono font-bold text-cyan-800 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200">
                         {alert.machineCode}
                       </span>
-                      <span className="text-xs text-slate-400 flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
+                      <span className="text-xs text-slate-500 font-medium flex items-center gap-1">
+                        <Clock className="w-3 h-3 text-slate-400" />
                         {alert.timestamp}
                       </span>
                     </div>
 
-                    <p className="text-sm text-slate-300 mb-2 leading-relaxed">
+                    <p className="text-sm text-slate-800 font-medium mb-2 leading-relaxed">
                       {alert.reason}
                     </p>
 
-                    <div className="flex items-start gap-2 bg-slate-950/50 p-2.5 rounded-md border border-slate-800/70 text-xs">
-                      <span className="text-slate-400 font-medium shrink-0">Action:</span>
-                      <span className="text-slate-200">{alert.recommendedAction}</span>
+                    <div className="flex items-start gap-2 bg-white/90 p-2.5 rounded-lg border border-slate-200 text-xs shadow-xs">
+                      <span className="text-slate-900 font-bold shrink-0">Action:</span>
+                      <span className="text-slate-800 font-medium">{alert.recommendedAction}</span>
                     </div>
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export function MaintenanceAlerts({
                     <button
                       type="button"
                       onClick={() => onScheduleMaintenance(alert.machineId)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 hover:border-blue-300 transition-colors shadow-xs"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 transition-colors shadow-xs cursor-pointer"
                     >
                       <Wrench className="w-3.5 h-3.5 text-blue-600" />
                       <span>Schedule</span>
@@ -143,7 +143,7 @@ export function MaintenanceAlerts({
                   <button
                     type="button"
                     onClick={() => onViewMachine(alert.machineId)}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white border border-blue-600 transition-all shadow-xs"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-cyan-600 hover:bg-cyan-700 text-white border border-cyan-600 transition-all shadow-xs cursor-pointer"
                   >
                     <span>View Machine</span>
                     <ArrowRight className="w-3.5 h-3.5 text-white" />

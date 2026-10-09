@@ -29,18 +29,18 @@ export function InventoryTrendChart({ data }: InventoryTrendChartProps) {
       const current = payload.find((p: any) => p.dataKey === "currentStock")?.value || 0;
 
       return (
-        <div className="p-3 rounded-xl bg-slate-900 border border-slate-700 shadow-xl text-xs space-y-1.5 font-sans min-w-[180px]">
-          <p className="font-bold text-white border-b border-slate-800 pb-1">{label}</p>
-          <div className="flex justify-between items-center text-cyan-400">
-            <span>Total On-Hand:</span>
+        <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-xl text-xs space-y-1.5 font-sans min-w-[180px]">
+          <p className="font-bold text-slate-900 border-b border-slate-200 pb-1">{label}</p>
+          <div className="flex justify-between items-center text-cyan-800">
+            <span className="font-medium">Total On-Hand:</span>
             <span className="font-mono font-bold">{current.toLocaleString()} units</span>
           </div>
-          <div className="flex justify-between items-center text-emerald-400">
-            <span>Stock Received:</span>
+          <div className="flex justify-between items-center text-emerald-700">
+            <span className="font-medium">Stock Received:</span>
             <span className="font-mono font-bold">+{received.toLocaleString()}</span>
           </div>
-          <div className="flex justify-between items-center text-rose-400">
-            <span>Prod. Consumption:</span>
+          <div className="flex justify-between items-center text-rose-700">
+            <span className="font-medium">Prod. Consumption:</span>
             <span className="font-mono font-bold">-{consumed.toLocaleString()}</span>
           </div>
         </div>
@@ -50,30 +50,30 @@ export function InventoryTrendChart({ data }: InventoryTrendChartProps) {
   };
 
   return (
-    <div className="p-5 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-md flex flex-col justify-between">
+    <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
         <div>
-          <h2 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-cyan-400" />
+          <h2 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
+            <TrendingUp className="w-4 h-4 text-cyan-600" />
             Inventory Stock Trend
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
             7-day stock movements: supplier receipts vs. shop floor production consumption
           </p>
         </div>
 
-        <div className="flex items-center gap-3 text-xs bg-slate-950/70 border border-slate-800 px-3 py-1.5 rounded-xl">
-          <span className="inline-flex items-center gap-1 text-emerald-400 font-medium">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+        <div className="flex items-center gap-3 text-xs bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-xl">
+          <span className="inline-flex items-center gap-1 text-emerald-700 font-semibold">
+            <span className="w-2 h-2 rounded-full bg-emerald-600" />
             Received
           </span>
-          <span className="inline-flex items-center gap-1 text-rose-400 font-medium">
-            <span className="w-2 h-2 rounded-full bg-rose-400" />
+          <span className="inline-flex items-center gap-1 text-rose-700 font-semibold">
+            <span className="w-2 h-2 rounded-full bg-rose-600" />
             Consumed
           </span>
-          <span className="inline-flex items-center gap-1 text-cyan-400 font-medium">
-            <span className="w-2 h-2 rounded-full bg-cyan-400" />
+          <span className="inline-flex items-center gap-1 text-cyan-800 font-semibold">
+            <span className="w-2 h-2 rounded-full bg-cyan-600" />
             Total Stock
           </span>
         </div>
@@ -85,26 +85,26 @@ export function InventoryTrendChart({ data }: InventoryTrendChartProps) {
           <ComposedChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="currentStockGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.0} />
+                <stop offset="5%" stopColor="#0891b2" stopOpacity={0.25} />
+                <stop offset="95%" stopColor="#0891b2" stopOpacity={0.0} />
               </linearGradient>
             </defs>
 
-            <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.3} vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.8} vertical={false} />
 
             <XAxis
               dataKey="dayLabel"
               stroke="#64748b"
               fontSize={11}
               tickLine={false}
-              axisLine={{ stroke: "#334155" }}
+              axisLine={{ stroke: "#e2e8f0" }}
             />
 
             <YAxis
               stroke="#64748b"
               fontSize={11}
               tickLine={false}
-              axisLine={{ stroke: "#334155" }}
+              axisLine={{ stroke: "#e2e8f0" }}
               tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
             />
 
@@ -113,7 +113,7 @@ export function InventoryTrendChart({ data }: InventoryTrendChartProps) {
             <Bar
               dataKey="stockReceived"
               name="Stock Received"
-              fill="#10b981"
+              fill="#059669"
               radius={[4, 4, 0, 0]}
               barSize={12}
             />
@@ -121,7 +121,7 @@ export function InventoryTrendChart({ data }: InventoryTrendChartProps) {
             <Bar
               dataKey="productionConsumption"
               name="Production Consumption"
-              fill="#f43f5e"
+              fill="#e11d48"
               radius={[4, 4, 0, 0]}
               barSize={12}
             />
@@ -130,7 +130,7 @@ export function InventoryTrendChart({ data }: InventoryTrendChartProps) {
               type="monotone"
               dataKey="currentStock"
               name="Current Stock"
-              stroke="#06b6d4"
+              stroke="#0891b2"
               strokeWidth={3}
               fill="url(#currentStockGrad)"
             />

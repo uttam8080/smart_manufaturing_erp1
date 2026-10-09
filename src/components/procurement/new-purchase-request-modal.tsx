@@ -91,24 +91,24 @@ export function NewPurchaseRequestModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden p-6 max-h-[92vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden p-6 max-h-[92vh] flex flex-col text-slate-900">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800 shrink-0">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200 shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+            <div className="p-2 rounded-lg bg-cyan-50 border border-cyan-200 text-cyan-700">
               <FilePlus className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white">Create Purchase Requisition</h3>
-              <p className="text-xs text-slate-400">
+              <h3 className="text-lg font-bold text-slate-900">Create Purchase Requisition</h3>
+              <p className="text-xs text-slate-600 font-medium">
                 Log departmental material demands and trigger supplier quotation bidding
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -119,7 +119,7 @@ export function NewPurchaseRequestModal({
           {/* Material & Category */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Material / Item Description *
               </label>
               <input
@@ -127,19 +127,19 @@ export function NewPurchaseRequestModal({
                 value={material}
                 onChange={(e) => setMaterial(e.target.value)}
                 placeholder="e.g. Wheat Flour (Refined)"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Category *
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value as MaterialCategory)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
@@ -151,9 +151,9 @@ export function NewPurchaseRequestModal({
           </div>
 
           {/* Quantity, Unit & Unit Cost */}
-          <div className="grid grid-cols-3 gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+          <div className="grid grid-cols-3 gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 mb-1">
                 Quantity *
               </label>
               <input
@@ -161,19 +161,19 @@ export function NewPurchaseRequestModal({
                 min="1"
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-100 font-mono font-bold"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-mono font-bold"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 mb-1">
                 Unit of Measure *
               </label>
               <select
                 value={unit}
                 onChange={(e) => setUnit(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-200"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold"
               >
                 <option value="kg">kg</option>
                 <option value="boxes">boxes</option>
@@ -184,7 +184,7 @@ export function NewPurchaseRequestModal({
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-emerald-400 mb-1">
+              <label className="block text-[11px] font-bold text-emerald-700 mb-1">
                 Est. Unit Cost (₹) *
               </label>
               <input
@@ -193,7 +193,7 @@ export function NewPurchaseRequestModal({
                 step="0.5"
                 value={estimatedUnitCost}
                 onChange={(e) => setEstimatedUnitCost(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-slate-900 border border-emerald-500/40 rounded-lg text-emerald-400 font-mono font-bold"
+                className="w-full px-3 py-2 bg-white border border-emerald-300 rounded-lg text-emerald-700 font-mono font-bold"
                 required
               />
             </div>
@@ -202,13 +202,13 @@ export function NewPurchaseRequestModal({
           {/* Department, Priority & Required Date */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Department *
               </label>
               <select
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
               >
                 {DEPARTMENTS.map((d) => (
                   <option key={d} value={d}>
@@ -219,13 +219,13 @@ export function NewPurchaseRequestModal({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Priority Level *
               </label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as RequestPriority)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500 font-semibold"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-bold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
               >
                 {PRIORITIES.map((p) => (
                   <option key={p} value={p}>
@@ -236,14 +236,14 @@ export function NewPurchaseRequestModal({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Required By Date *
               </label>
               <input
                 type="date"
                 value={requiredDate}
                 onChange={(e) => setRequiredDate(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white"
                 required
               />
             </div>
@@ -251,13 +251,13 @@ export function NewPurchaseRequestModal({
 
           {/* Supplier Preference */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
               Preferred Supplier
             </label>
             <select
               value={supplierPreference}
               onChange={(e) => setSupplierPreference(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
             >
               {suppliers.map((s) => (
                 <option key={s.id} value={s.supplierName}>
@@ -268,16 +268,16 @@ export function NewPurchaseRequestModal({
           </div>
 
           {/* Estimated Total Calculation */}
-          <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between text-xs">
-            <span className="text-slate-400 font-medium">Estimated Purchase Total:</span>
-            <span className="text-base font-bold font-mono text-emerald-400">
+          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs">
+            <span className="text-slate-600 font-bold">Estimated Purchase Total:</span>
+            <span className="text-base font-extrabold font-mono text-emerald-700">
               ₹{estimatedTotalCost.toLocaleString()}
             </span>
           </div>
 
           {/* Reason / Notes */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
               Procurement Justification & Technical Specs
             </label>
             <textarea
@@ -285,22 +285,22 @@ export function NewPurchaseRequestModal({
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="State the usage purpose, batch allocation, or production urgency..."
-              className="w-full p-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500 resize-none leading-relaxed"
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-medium text-xs focus:outline-none focus:border-cyan-500 focus:bg-white resize-none leading-relaxed"
             />
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800 shrink-0">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200 shrink-0">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+              className="px-4 py-2 text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer border border-slate-300"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 text-xs font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-500 rounded-lg transition-colors shadow-lg shadow-cyan-500/20 flex items-center gap-1.5"
+              className="px-5 py-2 text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 rounded-lg transition-colors shadow-md shadow-cyan-600/20 flex items-center gap-1.5 cursor-pointer"
             >
               <FilePlus className="w-4 h-4" />
               <span>Create Request</span>

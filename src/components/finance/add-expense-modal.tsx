@@ -87,28 +87,28 @@ export function AddExpenseModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in">
-      <div className="bg-slate-900 border border-slate-700/80 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-lg p-6 shadow-2xl relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors"
+          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-800">
-          <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <div className="flex items-center gap-3 mb-5 pb-4 border-b border-slate-200">
+          <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
             <PlusCircle className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-slate-100">Log Operational Expense</h3>
-            <p className="text-xs text-slate-400">Record factory overheads, utility bills, maintenance charges & service payouts</p>
+            <h3 className="text-lg font-bold text-slate-900">Log Operational Expense</h3>
+            <p className="text-xs text-slate-600 font-medium">Record factory overheads, utility bills, maintenance charges & service payouts</p>
           </div>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 rounded-lg bg-rose-500/10 border border-rose-500/20 text-xs text-rose-400 flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
+          <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-300 text-xs text-rose-800 font-bold flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
             {error}
           </div>
         )}
@@ -116,27 +116,27 @@ export function AddExpenseModal({
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Expense ID <span className="text-cyan-400">*</span>
+              <label className="block text-xs font-bold text-slate-700 mb-1">
+                Expense ID <span className="text-emerald-700">*</span>
               </label>
               <input
                 type="text"
                 value={expenseId}
                 onChange={(e) => setExpenseId(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 font-mono focus:outline-none focus:border-cyan-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 font-mono focus:outline-none focus:border-emerald-600 focus:bg-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Date <span className="text-cyan-400">*</span>
+              <label className="block text-xs font-bold text-slate-700 mb-1">
+                Date <span className="text-emerald-700">*</span>
               </label>
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 font-mono focus:outline-none focus:border-cyan-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 font-mono focus:outline-none focus:border-emerald-600 focus:bg-white"
                 required
               />
             </div>
@@ -144,13 +144,13 @@ export function AddExpenseModal({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Expense Category <span className="text-cyan-400">*</span>
+              <label className="block text-xs font-bold text-slate-700 mb-1">
+                Expense Category <span className="text-emerald-700">*</span>
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value as ExpenseCategory)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-600 focus:bg-white"
               >
                 {CATEGORIES.map((c) => (
                   <option key={c} value={c}>
@@ -161,13 +161,13 @@ export function AddExpenseModal({
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Department <span className="text-cyan-400">*</span>
+              <label className="block text-xs font-bold text-slate-700 mb-1">
+                Department <span className="text-emerald-700">*</span>
               </label>
               <select
                 value={department}
                 onChange={(e) => setDepartment(e.target.value as FinanceDepartment)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-600 focus:bg-white"
               >
                 {DEPARTMENTS.map((d) => (
                   <option key={d} value={d}>
@@ -179,8 +179,8 @@ export function AddExpenseModal({
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">
-              Description / Justification <span className="text-cyan-400">*</span>
+            <label className="block text-xs font-bold text-slate-700 mb-1">
+              Description / Justification <span className="text-emerald-700">*</span>
             </label>
             <textarea
               rows={2}
@@ -190,15 +190,15 @@ export function AddExpenseModal({
                 if (error) setError("");
               }}
               placeholder="e.g. Monthly maintenance overhaul on conveyor line and lubrication..."
-              className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:bg-white"
               required
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Amount (₹ INR) <span className="text-cyan-400">*</span>
+              <label className="block text-xs font-bold text-slate-700 mb-1">
+                Amount (₹ INR) <span className="text-emerald-700">*</span>
               </label>
               <input
                 type="number"
@@ -209,19 +209,19 @@ export function AddExpenseModal({
                   if (error) setError("");
                 }}
                 placeholder="e.g. 75000"
-                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 font-mono focus:outline-none focus:border-cyan-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 font-mono focus:outline-none focus:border-emerald-600 focus:bg-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">
-                Payment Status <span className="text-cyan-400">*</span>
+              <label className="block text-xs font-bold text-slate-700 mb-1">
+                Payment Status <span className="text-emerald-700">*</span>
               </label>
               <select
                 value={paymentStatus}
                 onChange={(e) => setPaymentStatus(e.target.value as PaymentStatus)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-600 focus:bg-white"
               >
                 {PAYMENT_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -232,17 +232,17 @@ export function AddExpenseModal({
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition-colors"
+              className="px-4 py-2 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl border border-slate-200 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg shadow-lg shadow-emerald-900/30 transition-colors flex items-center gap-1.5"
+              className="px-5 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-sm transition-colors flex items-center gap-1.5"
             >
               <IndianRupee className="w-4 h-4" />
               Save Expense Entry

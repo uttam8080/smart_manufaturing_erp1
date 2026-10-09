@@ -85,12 +85,12 @@ export function ProductionFilters({
     filters.dateRange !== "7d";
 
   return (
-    <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-md space-y-3">
+    <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
       {/* Top row: Search Bar and Quick Reset */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         {/* Search input */}
         <div className="relative flex-1">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
             <Search className="w-4 h-4" />
           </div>
           <input
@@ -98,12 +98,12 @@ export function ProductionFilters({
             placeholder="Search by Order # (e.g. PROD-00001), Batch #, or Product..."
             value={filters.searchQuery}
             onChange={(e) => onFilterChange({ searchQuery: e.target.value })}
-            className="w-full pl-9 pr-8 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 transition"
+            className="w-full pl-9 pr-8 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition"
           />
           {filters.searchQuery && (
             <button
               onClick={() => onFilterChange({ searchQuery: "" })}
-              className="absolute right-2.5 top-2.5 text-slate-500 hover:text-slate-300"
+              className="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -112,16 +112,16 @@ export function ProductionFilters({
 
         {/* Results counter & Reset button */}
         <div className="flex items-center justify-between sm:justify-end gap-3 text-xs">
-          <span className="text-slate-400 font-mono text-[11px]">
-            Showing <strong className="text-cyan-400 font-bold">{filteredCount}</strong> of {totalOrders} orders
+          <span className="text-slate-500 font-mono text-[11px]">
+            Showing <strong className="text-cyan-800 font-bold">{filteredCount}</strong> of {totalOrders} orders
           </span>
 
           {isFiltered && (
             <button
               onClick={onResetFilters}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-xs font-medium transition active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-bold transition active:scale-95 shadow-2xs"
             >
-              <RotateCcw className="w-3 h-3 text-amber-400" />
+              <RotateCcw className="w-3 h-3 text-amber-600" />
               <span>Reset Filters</span>
             </button>
           )}
@@ -129,17 +129,17 @@ export function ProductionFilters({
       </div>
 
       {/* Bottom row: Filter Dropdowns */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-1 border-t border-slate-800/80">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-2 border-t border-slate-100">
         {/* Date Range */}
         <div className="space-y-1">
-          <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1">
-            <Calendar className="w-3 h-3 text-cyan-400" />
+          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
+            <Calendar className="w-3 h-3 text-cyan-600" />
             Date Range
           </label>
           <select
             value={filters.dateRange}
             onChange={(e) => onFilterChange({ dateRange: e.target.value })}
-            className="w-full px-2 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500 cursor-pointer font-medium"
+            className="w-full px-2 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer font-medium"
           >
             <option value="today">Today (Shift 1)</option>
             <option value="7d">Last 7 Days</option>
@@ -150,14 +150,14 @@ export function ProductionFilters({
 
         {/* Product Filter */}
         <div className="space-y-1">
-          <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1">
-            <Layers className="w-3 h-3 text-blue-400" />
+          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
+            <Layers className="w-3 h-3 text-blue-600" />
             Product
           </label>
           <select
             value={filters.product}
             onChange={(e) => onFilterChange({ product: e.target.value })}
-            className="w-full px-2 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500 cursor-pointer"
+            className="w-full px-2 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer font-medium"
           >
             <option value="all">All Products</option>
             {products.map((prod) => (
@@ -170,14 +170,14 @@ export function ProductionFilters({
 
         {/* Machine Filter */}
         <div className="space-y-1">
-          <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1">
-            <Wrench className="w-3 h-3 text-orange-400" />
+          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
+            <Wrench className="w-3 h-3 text-orange-600" />
             Machine
           </label>
           <select
             value={filters.machine}
             onChange={(e) => onFilterChange({ machine: e.target.value })}
-            className="w-full px-2 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500 cursor-pointer"
+            className="w-full px-2 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer font-medium"
           >
             <option value="all">All Machines</option>
             {machines.map((mach) => (
@@ -190,14 +190,14 @@ export function ProductionFilters({
 
         {/* Shift Filter */}
         <div className="space-y-1">
-          <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1">
-            <Clock className="w-3 h-3 text-purple-400" />
+          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
+            <Clock className="w-3 h-3 text-purple-600" />
             Shift
           </label>
           <select
             value={filters.shift}
             onChange={(e) => onFilterChange({ shift: e.target.value })}
-            className="w-full px-2 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500 cursor-pointer"
+            className="w-full px-2 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer font-medium"
           >
             <option value="all">All Shifts</option>
             {shifts.map((s) => (
@@ -210,14 +210,14 @@ export function ProductionFilters({
 
         {/* Status Filter */}
         <div className="space-y-1">
-          <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1">
-            <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
+            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
             Status
           </label>
           <select
             value={filters.status}
             onChange={(e) => onFilterChange({ status: e.target.value })}
-            className="w-full px-2 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500 cursor-pointer"
+            className="w-full px-2 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer font-medium"
           >
             <option value="all">All Statuses</option>
             {statuses.map((st) => (
@@ -230,14 +230,14 @@ export function ProductionFilters({
 
         {/* Priority Filter */}
         <div className="space-y-1">
-          <label className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1">
-            <AlertCircle className="w-3 h-3 text-rose-400" />
+          <label className="text-[10px] font-bold uppercase tracking-wider text-slate-600 flex items-center gap-1">
+            <AlertCircle className="w-3 h-3 text-rose-600" />
             Priority
           </label>
           <select
             value={filters.priority}
             onChange={(e) => onFilterChange({ priority: e.target.value })}
-            className="w-full px-2 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500 cursor-pointer"
+            className="w-full px-2 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer font-medium"
           >
             <option value="all">All Priorities</option>
             {priorities.map((p) => (

@@ -259,23 +259,23 @@ export function ScheduleMaintenanceModal({
   const monthName = viewMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-6 overflow-visible">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-2xl p-6 overflow-visible text-slate-900">
         {/* Modal Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-blue-50 border border-blue-200 dark:bg-cyan-500/10 dark:border-cyan-500/20 text-blue-600 dark:text-cyan-400">
+            <div className="p-2 rounded-xl bg-cyan-50 border border-cyan-200 text-cyan-700">
               <Wrench className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Schedule Maintenance Work Order</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Create planned preventive or corrective service record</p>
+              <h3 className="text-lg font-bold text-slate-900">Schedule Maintenance Work Order</h3>
+              <p className="text-xs text-slate-600 font-medium">Create planned preventive or corrective service record</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -284,15 +284,15 @@ export function ScheduleMaintenanceModal({
         {/* Form */}
         <form onSubmit={handleSubmit} className="mt-5 space-y-4">
           {error && (
-            <div className="flex items-center gap-2 p-3 bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/30 rounded-lg text-rose-700 dark:text-rose-400 text-xs">
-              <AlertCircle className="w-4 h-4 shrink-0" />
+            <div className="flex items-center gap-2 p-3 bg-rose-50 border border-rose-200 rounded-lg text-rose-800 text-xs font-bold">
+              <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
               <span>{error}</span>
             </div>
           )}
 
           {/* Machine Selection (Custom in-DOM Dropdown) */}
           <div className="relative" ref={machineDropdownRef}>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Target Machine *
             </label>
             <button
@@ -301,30 +301,30 @@ export function ScheduleMaintenanceModal({
                 setIsMachineDropdownOpen((prev) => !prev);
                 setIsDatePickerOpen(false);
               }}
-              className="w-full flex items-center justify-between px-3.5 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-lg text-left text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-all cursor-pointer shadow-sm"
+              className="w-full flex items-center justify-between px-3.5 py-2.5 bg-slate-50 hover:bg-white border border-slate-300 rounded-lg text-left text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all cursor-pointer shadow-xs"
             >
               {selectedMachine ? (
                 <div className="flex items-center gap-2 truncate">
-                  <span className="font-bold text-blue-600 dark:text-cyan-400 font-mono">{selectedMachine.machineCode}</span>
-                  <span className="text-slate-900 dark:text-white font-medium truncate">— {selectedMachine.machineName}</span>
+                  <span className="font-bold text-cyan-800 font-mono">{selectedMachine.machineCode}</span>
+                  <span className="text-slate-900 font-bold truncate">— {selectedMachine.machineName}</span>
                   <span
                     className={`ml-1.5 text-[10px] px-2 py-0.5 rounded-full font-bold border ${
                       selectedMachine.status === "Running"
-                        ? "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-500/10 dark:border-emerald-500/30 dark:text-emerald-400"
+                        ? "bg-emerald-50 text-emerald-800 border-emerald-300"
                         : selectedMachine.status === "Warning"
-                        ? "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-500/10 dark:border-amber-500/30 dark:text-amber-400"
-                        : "bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300"
+                        ? "bg-amber-50 text-amber-800 border-amber-300"
+                        : "bg-slate-100 text-slate-700 border-slate-300"
                     }`}
                   >
                     {selectedMachine.status}
                   </span>
                 </div>
               ) : (
-                <span className="text-slate-400 dark:text-slate-500">-- Select Target Machine --</span>
+                <span className="text-slate-400 font-medium">-- Select Target Machine --</span>
               )}
               <ChevronDown
                 className={`w-4 h-4 text-slate-500 transition-transform shrink-0 ${
-                  isMachineDropdownOpen ? "rotate-180 text-blue-600 dark:text-cyan-400" : ""
+                  isMachineDropdownOpen ? "rotate-180 text-cyan-600" : ""
                 }`}
               />
             </button>
@@ -333,7 +333,7 @@ export function ScheduleMaintenanceModal({
             {isMachineDropdownOpen && (
               <div
                 onWheel={(e) => e.stopPropagation()}
-                className="absolute left-0 right-0 top-full mt-1.5 z-50 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xl p-2 max-h-60 overflow-y-auto overscroll-contain space-y-1 animate-in fade-in zoom-in-95 duration-150"
+                className="absolute left-0 right-0 top-full mt-1.5 z-50 bg-white border border-slate-200 rounded-xl shadow-2xl p-2 max-h-60 overflow-y-auto overscroll-contain space-y-1 animate-in fade-in zoom-in-95 duration-150"
               >
                 <div className="relative mb-2 px-1">
                   <input
@@ -341,13 +341,13 @@ export function ScheduleMaintenanceModal({
                     placeholder="Search machine code or name..."
                     value={machineSearch}
                     onChange={(e) => setMachineSearch(e.target.value)}
-                    className="w-full pl-8 pr-3 py-1.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500"
+                    className="w-full pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-300 rounded-lg text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-medium"
                   />
-                  <Search className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 absolute left-3 top-2.5" />
+                  <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5" />
                 </div>
 
                 {filteredMachinesList.length === 0 ? (
-                  <div className="p-3 text-center text-xs text-slate-500">No matching machines</div>
+                  <div className="p-3 text-center text-xs text-slate-500 font-medium">No matching machines</div>
                 ) : (
                   filteredMachinesList.map((m) => {
                     const isCurrent = m.id === selectedMachineId;
@@ -362,25 +362,25 @@ export function ScheduleMaintenanceModal({
                         }}
                         className={`w-full flex items-center justify-between p-2.5 rounded-lg text-left text-xs transition-colors cursor-pointer select-none ${
                           isCurrent
-                            ? "bg-blue-50 border border-blue-200 dark:bg-cyan-500/15 dark:border-cyan-500/30"
-                            : "hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent"
+                            ? "bg-cyan-50 border border-cyan-300"
+                            : "hover:bg-slate-50 border border-transparent"
                         }`}
                       >
                         <div className="flex flex-col gap-0.5">
                           <div className="flex items-center gap-1.5">
-                            <span className="font-mono font-bold text-blue-600 dark:text-cyan-400">{m.machineCode}</span>
-                            <span className="font-semibold text-slate-900 dark:text-slate-100">{m.machineName}</span>
+                            <span className="font-mono font-bold text-cyan-800">{m.machineCode}</span>
+                            <span className="font-bold text-slate-900">{m.machineName}</span>
                           </div>
-                          <span className="text-[11px] text-slate-500 dark:text-slate-400">{m.location || "Main Factory"}</span>
+                          <span className="text-[11px] text-slate-500 font-medium">{m.location || "Main Factory"}</span>
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
                           <span
                             className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold border ${
                               m.riskScore >= 75
-                                ? "bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/30"
+                                ? "bg-rose-50 text-rose-800 border-rose-300"
                                 : m.riskScore >= 45
-                                ? "bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30"
-                                : "bg-emerald-100 text-emerald-800 border-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30"
+                                ? "bg-amber-50 text-amber-800 border-amber-300"
+                                : "bg-emerald-50 text-emerald-800 border-emerald-300"
                             }`}
                           >
                             Risk {m.riskScore}%
@@ -394,15 +394,15 @@ export function ScheduleMaintenanceModal({
             )}
 
             {selectedMachine && (
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Location: <span className="text-slate-700 dark:text-slate-300 font-medium">{selectedMachine.location}</span> | Current Risk:{" "}
+              <p className="text-xs text-slate-600 mt-1 font-medium">
+                Location: <span className="text-slate-900 font-bold">{selectedMachine.location}</span> | Current Risk:{" "}
                 <span
                   className={
                     selectedMachine.riskScore >= 75
-                      ? "text-rose-600 dark:text-rose-400 font-bold"
+                      ? "text-rose-700 font-bold"
                       : selectedMachine.riskScore >= 45
-                      ? "text-amber-600 dark:text-amber-400 font-bold"
-                      : "text-emerald-600 dark:text-emerald-400 font-bold"
+                      ? "text-amber-700 font-bold"
+                      : "text-emerald-700 font-bold"
                   }
                 >
                   {selectedMachine.riskScore}% ({selectedMachine.riskLevel})
@@ -413,7 +413,7 @@ export function ScheduleMaintenanceModal({
 
           {/* Maintenance Type */}
           <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Maintenance Type *
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -427,8 +427,8 @@ export function ScheduleMaintenanceModal({
                     onClick={() => setMaintenanceType(type)}
                     className={`px-3 py-2 rounded-lg text-xs font-bold border transition-all text-center cursor-pointer select-none ${
                       isSelected
-                        ? "bg-blue-600 text-white border-blue-600 dark:bg-cyan-500/20 dark:border-cyan-500 dark:text-cyan-300 shadow-sm"
-                        : "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900"
+                        ? "bg-cyan-600 text-white border-cyan-600 shadow-xs"
+                        : "bg-slate-50 border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
                     }`}
                   >
                     {type}
@@ -442,7 +442,7 @@ export function ScheduleMaintenanceModal({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Custom Scheduled Date In-DOM Picker */}
             <div className="relative" ref={datePickerRef}>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Scheduled Date *
               </label>
               <button
@@ -451,15 +451,15 @@ export function ScheduleMaintenanceModal({
                   setIsDatePickerOpen((prev) => !prev);
                   setIsMachineDropdownOpen(false);
                 }}
-                className="w-full flex items-center justify-between pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors cursor-pointer text-left relative"
+                className="w-full flex items-center justify-between pl-9 pr-3 py-2 bg-slate-50 hover:bg-white border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors cursor-pointer text-left relative"
               >
-                <CalendarIcon className="w-4 h-4 text-blue-600 dark:text-cyan-400 absolute left-3 top-2.5 pointer-events-none" />
-                <span className={scheduledDate ? "text-slate-900 dark:text-slate-100 font-semibold" : "text-slate-400 dark:text-slate-500"}>
+                <CalendarIcon className="w-4 h-4 text-cyan-600 absolute left-3 top-2.5 pointer-events-none" />
+                <span className={scheduledDate ? "text-slate-900 font-bold" : "text-slate-400 font-medium"}>
                   {scheduledDate ? formatDateForDisplay(scheduledDate) : "Pick date..."}
                 </span>
                 <ChevronDown
                   className={`w-4 h-4 text-slate-500 transition-transform ${
-                    isDatePickerOpen ? "rotate-180 text-blue-600 dark:text-cyan-400" : ""
+                    isDatePickerOpen ? "rotate-180 text-cyan-600" : ""
                   }`}
                 />
               </button>
@@ -468,15 +468,15 @@ export function ScheduleMaintenanceModal({
               {isDatePickerOpen && (
                 <div
                   onWheel={(e) => e.stopPropagation()}
-                  className="absolute left-0 right-0 sm:right-auto sm:w-72 top-full mt-1.5 z-50 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xl p-3 animate-in fade-in zoom-in-95 duration-150"
+                  className="absolute left-0 right-0 sm:right-auto sm:w-72 top-full mt-1.5 z-50 bg-white border border-slate-200 rounded-xl shadow-2xl p-3 animate-in fade-in zoom-in-95 duration-150"
                 >
                   {/* Quick Preset Buttons */}
-                  <div className="grid grid-cols-3 gap-1 pb-2.5 mb-2.5 border-b border-slate-200 dark:border-slate-800">
+                  <div className="grid grid-cols-3 gap-1 pb-2.5 mb-2.5 border-b border-slate-200">
                     <div
                       role="button"
                       tabIndex={0}
                       onClick={() => setPresetDate(0)}
-                      className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:bg-blue-50 hover:border-blue-300 dark:hover:border-cyan-500 text-[11px] text-slate-700 dark:text-slate-300 font-semibold text-center cursor-pointer"
+                      className="px-2 py-1 rounded bg-slate-100 border border-slate-200 hover:bg-cyan-50 hover:border-cyan-300 text-[11px] text-slate-800 font-bold text-center cursor-pointer"
                     >
                       Today
                     </div>
@@ -484,7 +484,7 @@ export function ScheduleMaintenanceModal({
                       role="button"
                       tabIndex={0}
                       onClick={() => setPresetDate(1)}
-                      className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:bg-blue-50 hover:border-blue-300 dark:hover:border-cyan-500 text-[11px] text-slate-700 dark:text-slate-300 font-semibold text-center cursor-pointer"
+                      className="px-2 py-1 rounded bg-slate-100 border border-slate-200 hover:bg-cyan-50 hover:border-cyan-300 text-[11px] text-slate-800 font-bold text-center cursor-pointer"
                     >
                       Tomorrow
                     </div>
@@ -492,7 +492,7 @@ export function ScheduleMaintenanceModal({
                       role="button"
                       tabIndex={0}
                       onClick={() => setPresetDate(7)}
-                      className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:bg-blue-50 hover:border-blue-300 dark:hover:border-cyan-500 text-[11px] text-slate-700 dark:text-slate-300 font-semibold text-center cursor-pointer"
+                      className="px-2 py-1 rounded bg-slate-100 border border-slate-200 hover:bg-cyan-50 hover:border-cyan-300 text-[11px] text-slate-800 font-bold text-center cursor-pointer"
                     >
                       +1 Week
                     </div>
@@ -503,22 +503,22 @@ export function ScheduleMaintenanceModal({
                     <button
                       type="button"
                       onClick={() => setViewMonth(new Date(calYear, calMonth - 1, 1))}
-                      className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                      className="p-1 rounded hover:bg-slate-100 text-slate-600 hover:text-slate-900 cursor-pointer"
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </button>
-                    <span className="text-xs font-bold text-slate-900 dark:text-white">{monthName}</span>
+                    <span className="text-xs font-bold text-slate-900">{monthName}</span>
                     <button
                       type="button"
                       onClick={() => setViewMonth(new Date(calYear, calMonth + 1, 1))}
-                      className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                      className="p-1 rounded hover:bg-slate-100 text-slate-600 hover:text-slate-900 cursor-pointer"
                     >
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
 
                   {/* Day Names */}
-                  <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-1">
+                  <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-500 mb-1">
                     <span>Su</span>
                     <span>Mo</span>
                     <span>Tu</span>
@@ -553,10 +553,10 @@ export function ScheduleMaintenanceModal({
                           }}
                           className={`h-7 w-7 mx-auto rounded-lg flex items-center justify-center font-bold text-xs transition-all cursor-pointer select-none ${
                             isSelected
-                              ? "bg-blue-600 text-white dark:bg-cyan-500 dark:text-slate-950 shadow-md shadow-blue-500/20"
+                              ? "bg-cyan-600 text-white shadow-xs"
                               : isToday
-                              ? "border border-blue-500 text-blue-600 dark:text-cyan-400 hover:bg-blue-50 dark:hover:bg-slate-800"
-                              : "text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                              ? "border border-cyan-500 text-cyan-700 hover:bg-cyan-50"
+                              : "text-slate-800 hover:bg-slate-100"
                           }`}
                         >
                           {dayNum}
@@ -569,7 +569,7 @@ export function ScheduleMaintenanceModal({
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Assigned Technician *
               </label>
               <div className="relative">
@@ -578,7 +578,7 @@ export function ScheduleMaintenanceModal({
                   placeholder="e.g. Viktor Vance (Chief Mech Tech)"
                   value={technician}
                   onChange={(e) => setTechnician(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors"
+                  className="w-full pl-9 pr-3 py-2 bg-slate-50 hover:bg-white border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors font-medium"
                 />
                 <User className="w-4 h-4 text-slate-400 absolute left-3 top-2.5 pointer-events-none" />
               </div>
@@ -588,7 +588,7 @@ export function ScheduleMaintenanceModal({
           {/* Estimated Downtime & Cost */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Est. Downtime (Hours)
               </label>
               <div className="relative">
@@ -602,14 +602,14 @@ export function ScheduleMaintenanceModal({
                   value={estimatedHours}
                   onChange={(e) => setEstimatedHours(e.target.value)}
                   title="Scroll mouse wheel up/down to increment/decrement hours"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors"
+                  className="w-full pl-9 pr-3 py-2 bg-slate-50 hover:bg-white border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors font-bold"
                 />
                 <Clock className="w-4 h-4 text-slate-400 absolute left-3 top-2.5 pointer-events-none" />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Est. Cost (₹ INR)
               </label>
               <div className="relative">
@@ -622,7 +622,7 @@ export function ScheduleMaintenanceModal({
                   value={estimatedCost}
                   onChange={(e) => setEstimatedCost(e.target.value)}
                   title="Scroll mouse wheel up/down to increment/decrement cost"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors"
+                  className="w-full pl-9 pr-3 py-2 bg-slate-50 hover:bg-white border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors font-bold"
                 />
                 <IndianRupee className="w-4 h-4 text-slate-400 absolute left-3 top-2.5 pointer-events-none" />
               </div>
@@ -631,7 +631,7 @@ export function ScheduleMaintenanceModal({
 
           {/* Description */}
           <div>
-            <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Work Description & Scope *
             </label>
             <div className="relative">
@@ -640,32 +640,32 @@ export function ScheduleMaintenanceModal({
                 placeholder="e.g. Multi-point lubrication, sensor calibration & drive alignment check..."
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-900 dark:text-slate-100 text-sm focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition-colors resize-none"
+                className="w-full p-3 bg-slate-50 hover:bg-white border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors resize-none font-medium"
               />
             </div>
           </div>
 
           {/* Notice */}
-          <div className="bg-slate-50 dark:bg-slate-950/60 rounded-lg p-3 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+          <div className="bg-slate-50 rounded-lg p-3 border border-slate-200 text-xs text-slate-700 flex items-start gap-2 font-medium">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
             <span>
               This will update the machine record and log a scheduled work order.
             </span>
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
+              className="px-4 py-2 text-sm font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 dark:bg-cyan-400 dark:hover:bg-cyan-300 dark:text-slate-950 rounded-lg transition-colors shadow-lg shadow-blue-500/20 dark:shadow-cyan-500/20 disabled:opacity-60 flex items-center gap-1.5 cursor-pointer"
+              className="px-5 py-2 text-sm font-bold text-white bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 rounded-lg transition-colors shadow-xs disabled:opacity-60 flex items-center gap-1.5 cursor-pointer"
             >
               <Wrench className="w-4 h-4" />
               <span>{isSubmitting ? "Creating..." : "Confirm Work Order"}</span>

@@ -136,24 +136,24 @@ export function NewInspectionModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden p-6 max-h-[88vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden p-6 max-h-[88vh] flex flex-col text-slate-900">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800 shrink-0">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200 shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+            <div className="p-2 rounded-lg bg-cyan-50 border border-cyan-200 text-cyan-700">
               <Plus className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white">Record Quality Inspection</h3>
-              <p className="text-xs text-slate-400">
+              <h3 className="text-lg font-bold text-slate-900">Record Quality Inspection</h3>
+              <p className="text-xs text-slate-600 font-medium">
                 Log a new lot verification audit and automatic defect non-conformance
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -164,7 +164,7 @@ export function NewInspectionModal({
           {/* Production Order & Product */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Production Order *
               </label>
               <input
@@ -172,19 +172,19 @@ export function NewInspectionModal({
                 value={productionOrderId}
                 onChange={(e) => setProductionOrderId(e.target.value)}
                 placeholder="e.g. PO-2026-012"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Target Product SKU *
               </label>
               <select
                 value={product}
                 onChange={(e) => setProduct(e.target.value as ProductName)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
               >
                 {PRODUCT_NAMES.map((name) => (
                   <option key={name} value={name}>
@@ -198,7 +198,7 @@ export function NewInspectionModal({
           {/* Batch Number & Date */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Batch Number *
               </label>
               <input
@@ -206,20 +206,20 @@ export function NewInspectionModal({
                 value={batchNumber}
                 onChange={(e) => setBatchNumber(e.target.value)}
                 placeholder="e.g. BATCH-2026-1120"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500 font-mono"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-mono font-bold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Inspection Date *
               </label>
               <input
                 type="date"
                 value={inspectionDate}
                 onChange={(e) => setInspectionDate(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white"
                 required
               />
             </div>
@@ -228,13 +228,13 @@ export function NewInspectionModal({
           {/* Inspector & Status */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Assigned Inspector *
               </label>
               <select
                 value={inspectorName}
                 onChange={(e) => setInspectorName(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500 cursor-pointer"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
                 required
               >
                 {QUALITY_INSPECTORS.map((insp) => (
@@ -246,13 +246,13 @@ export function NewInspectionModal({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Inspection Decision *
               </label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as InspectionStatus)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500 font-semibold"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 text-xs focus:outline-none focus:border-cyan-500 focus:bg-white font-bold cursor-pointer"
               >
                 <option value="Passed">Passed (100% Conforming)</option>
                 <option value="Conditional">Conditional (Rework / Resample)</option>
@@ -263,9 +263,9 @@ export function NewInspectionModal({
           </div>
 
           {/* Quantities */}
-          <div className="grid grid-cols-3 gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+          <div className="grid grid-cols-3 gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 mb-1">
                 Inspected Qty *
               </label>
               <input
@@ -273,13 +273,13 @@ export function NewInspectionModal({
                 min="1"
                 value={inspectedQuantity}
                 onChange={(e) => handleInspectedChange(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-100 font-mono font-bold"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-mono font-bold"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-emerald-400 mb-1">
+              <label className="block text-[11px] font-bold text-emerald-700 mb-1">
                 Passed Qty *
               </label>
               <input
@@ -287,13 +287,13 @@ export function NewInspectionModal({
                 min="0"
                 value={passedQuantity}
                 onChange={(e) => handlePassedChange(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-slate-900 border border-emerald-500/40 rounded-lg text-emerald-400 font-mono font-bold"
+                className="w-full px-3 py-2 bg-white border border-emerald-300 rounded-lg text-emerald-700 font-mono font-bold"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-rose-400 mb-1">
+              <label className="block text-[11px] font-bold text-rose-700 mb-1">
                 Failed Qty
               </label>
               <input
@@ -301,27 +301,27 @@ export function NewInspectionModal({
                 min="0"
                 value={failedQuantity}
                 onChange={(e) => setFailedQuantity(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-slate-900 border border-rose-500/40 rounded-lg text-rose-400 font-mono font-bold"
+                className="w-full px-3 py-2 bg-white border border-rose-300 rounded-lg text-rose-700 font-mono font-bold"
               />
             </div>
           </div>
 
           {/* If failed/conditional, show defect creation fields */}
           {(status === "Failed" || status === "Conditional" || failedQuantity > 0) && (
-            <div className="p-3.5 rounded-xl bg-rose-950/20 border border-rose-500/30 space-y-3">
-              <div className="flex items-center gap-2 text-rose-400 font-semibold text-xs">
+            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 space-y-3">
+              <div className="flex items-center gap-2 text-rose-800 font-bold text-xs">
                 <AlertTriangle className="w-4 h-4" />
                 <span>Non-Conformance Defect Mode Registration</span>
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
                   Primary Defect Mode *
                 </label>
                 <select
                   value={defectType}
                   onChange={(e) => setDefectType(e.target.value as DefectTypeName)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 text-xs"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold text-xs"
                 >
                   {DEFECT_TYPES.map((type) => (
                     <option key={type} value={type}>
@@ -332,7 +332,7 @@ export function NewInspectionModal({
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                <label className="block text-[11px] font-bold text-slate-800 uppercase tracking-wider mb-1">
                   Root Cause Synopsis
                 </label>
                 <input
@@ -340,7 +340,7 @@ export function NewInspectionModal({
                   placeholder="e.g. Temperature over-bake or packaging seal tear..."
                   value={rootCause}
                   onChange={(e) => setRootCause(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-slate-200 text-xs"
+                  className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 text-xs font-medium"
                 />
               </div>
             </div>
@@ -348,37 +348,37 @@ export function NewInspectionModal({
 
           {/* Notes */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
               Auditor Remarks & Notes
             </label>
             <textarea
               rows={2}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full p-3 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500 resize-none leading-relaxed"
+              className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-medium text-xs focus:outline-none focus:border-cyan-500 focus:bg-white resize-none leading-relaxed"
             />
           </div>
 
           {/* Notice */}
-          <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-800 text-slate-400 flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-700 font-medium flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
             <span>
               Submitting updates the inspection registry, recalibrates plant pass rate, and logs any non-conformance tickets into mock state.
             </span>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800 shrink-0">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200 shrink-0">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+              className="px-4 py-2 text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer border border-slate-300"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 text-xs font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 active:bg-cyan-500 rounded-lg transition-colors shadow-lg shadow-cyan-500/20 flex items-center gap-1.5"
+              className="px-5 py-2 text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-700 active:bg-cyan-800 rounded-lg transition-colors shadow-md shadow-cyan-600/20 flex items-center gap-1.5 cursor-pointer"
             >
               <ClipboardCheck className="w-4 h-4" />
               <span>Record Inspection</span>

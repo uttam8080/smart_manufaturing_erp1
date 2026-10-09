@@ -41,20 +41,20 @@ export function FinancialOverview({
   const netMargin = ((profit / (revenue || 1)) * 100).toFixed(1);
 
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 sm:p-6 backdrop-blur-sm shadow-md">
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-800/80 mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200 mb-5">
         <div>
-          <h3 className="text-base font-bold text-white tracking-tight">
+          <h3 className="text-base font-bold text-slate-900 tracking-tight">
             Financial Overview & Fiscal Health Matrix
           </h3>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-600 font-medium">
             Current monthly liquidity, cost distribution, profitability margin & working capital position
           </p>
         </div>
 
-        <div className="flex items-center gap-1.5 text-xs text-slate-400 bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200">
+          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
           <span>Audited Real-Time Ledger</span>
         </div>
       </div>
@@ -62,99 +62,99 @@ export function FinancialOverview({
       {/* Grid of Key Financial Summaries */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         {/* Total Inflow vs Outflow */}
-        <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between">
+        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-slate-400">Total Billed Revenue</span>
-              <span className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span className="text-xs font-bold text-slate-700">Total Billed Revenue</span>
+              <span className="p-1.5 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
                 <ArrowUpRight className="w-4 h-4" />
               </span>
             </div>
-            <div className="text-xl font-bold text-white">{formatCurrency(revenue)}</div>
-            <p className="text-[11px] text-emerald-400 mt-1 flex items-center gap-1">
-              <TrendingUp className="w-3 h-3" /> +19.1% Net Operating Profit Margin
+            <div className="text-xl font-black text-slate-900">{formatCurrency(revenue)}</div>
+            <p className="text-[11px] text-emerald-800 font-bold mt-1 flex items-center gap-1">
+              <TrendingUp className="w-3.5 h-3.5 text-emerald-600" /> +19.1% Net Operating Profit Margin
             </p>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-slate-800/80 grid grid-cols-2 gap-2 text-xs">
+          <div className="mt-4 pt-3 border-t border-slate-200 grid grid-cols-2 gap-2 text-xs">
             <div>
-              <span className="text-[10px] text-slate-500 uppercase block">Expenses</span>
-              <span className="font-semibold text-rose-400">{formatCurrency(expenses)}</span>
+              <span className="text-[10px] text-slate-500 uppercase font-bold block">Expenses</span>
+              <span className="font-bold text-rose-800">{formatCurrency(expenses)}</span>
             </div>
             <div>
-              <span className="text-[10px] text-slate-500 uppercase block">Net Profit</span>
-              <span className="font-semibold text-emerald-400">{formatCurrency(profit)}</span>
+              <span className="text-[10px] text-slate-500 uppercase font-bold block">Net Profit</span>
+              <span className="font-bold text-emerald-800">{formatCurrency(profit)}</span>
             </div>
           </div>
         </div>
 
         {/* Cash Position */}
-        <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between">
+        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-slate-400">Cash Position & Liquidity</span>
-              <span className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              <span className="text-xs font-bold text-slate-700">Cash Position & Liquidity</span>
+              <span className="p-1.5 rounded-xl bg-cyan-50 text-cyan-600 border border-cyan-200">
                 <Wallet className="w-4 h-4" />
               </span>
             </div>
-            <div className="text-xl font-bold text-cyan-400">{formatCurrency(cashPosition)}</div>
-            <p className="text-[11px] text-slate-400 mt-1">
+            <div className="text-xl font-black text-cyan-800">{formatCurrency(cashPosition)}</div>
+            <p className="text-[11px] text-slate-600 font-medium mt-1">
               Working capital reserve & liquid bank balances
             </p>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span className="text-slate-400">Cash Runway:</span>
-            <span className="text-slate-200 font-semibold">2.8 Months Operating Burn</span>
+          <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span className="text-slate-600 font-medium">Cash Runway:</span>
+            <span className="text-slate-900 font-bold">2.8 Months Operating Burn</span>
           </div>
         </div>
 
         {/* Pending Receivables */}
-        <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between">
+        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-slate-400">Pending Receivables</span>
-              <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
+              <span className="text-xs font-bold text-slate-700">Pending Receivables</span>
+              <span className="p-1.5 rounded-xl bg-purple-50 text-purple-600 border border-purple-200">
                 <ArrowDownLeft className="w-4 h-4" />
               </span>
             </div>
-            <div className="text-xl font-bold text-purple-400">{formatCurrency(pendingReceivables)}</div>
-            <p className="text-[11px] text-slate-400 mt-1">
+            <div className="text-xl font-black text-purple-800">{formatCurrency(pendingReceivables)}</div>
+            <p className="text-[11px] text-slate-600 font-medium mt-1">
               Billed customer invoices within 30-day payment term
             </p>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
-            <span className="text-slate-400">Expected Inflow:</span>
-            <span className="text-emerald-400 font-semibold">₹19,50,000 by Oct 15</span>
+          <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span className="text-slate-600 font-medium">Expected Inflow:</span>
+            <span className="text-emerald-800 font-bold">₹19,50,000 by Oct 15</span>
           </div>
         </div>
       </div>
 
       {/* Mini Cost Breakdown Progress Matrix */}
       <div>
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-300 mb-2.5">
+        <div className="flex items-center justify-between text-xs font-bold text-slate-700 mb-2.5">
           <span className="flex items-center gap-1.5">
-            <PieIcon className="w-3.5 h-3.5 text-cyan-400" />
+            <PieIcon className="w-3.5 h-3.5 text-cyan-600" />
             Manufacturing Cost Breakdown Summary
           </span>
-          <span className="text-slate-400">Total Operating Expenses: {formatCurrency(expenses)}</span>
+          <span className="text-slate-600 font-medium">Total Operating Expenses: {formatCurrency(expenses)}</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {costBreakdown.slice(0, 4).map((cost, idx) => (
-            <div key={idx} className="p-3 rounded-lg bg-slate-950/40 border border-slate-800/80">
+            <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200">
               <div className="flex items-center justify-between text-xs mb-1.5">
-                <span className="text-slate-300 font-medium truncate">{cost.category}</span>
-                <span className="text-slate-200 font-bold">{cost.percentage}%</span>
+                <span className="text-slate-900 font-bold truncate">{cost.category}</span>
+                <span className="text-slate-900 font-black">{cost.percentage}%</span>
               </div>
-              <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden mb-1">
+              <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden mb-1">
                 <div
                   className="h-1.5 rounded-full"
                   style={{ width: `${cost.percentage}%`, backgroundColor: cost.color }}
                 />
               </div>
-              <span className="text-[10px] text-slate-400 font-mono">{formatCurrency(cost.amount)}</span>
+              <span className="text-[10px] text-slate-600 font-mono font-medium">{formatCurrency(cost.amount)}</span>
             </div>
           ))}
         </div>

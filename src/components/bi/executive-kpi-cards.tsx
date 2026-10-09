@@ -110,10 +110,10 @@ export function ExecutiveKpiCards({ data }: ExecutiveKpiCardsProps) {
         return (
           <div
             key={idx}
-            className="rounded-xl border border-slate-800 bg-slate-900/80 p-4 backdrop-blur-sm hover:border-slate-700 transition-all shadow-md flex flex-col justify-between group"
+            className="rounded-xl border border-slate-200 bg-white p-4 hover:border-blue-400 transition-all shadow-sm flex flex-col justify-between group"
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-semibold text-slate-400 tracking-tight">
+              <span className="text-xs font-bold text-slate-700 tracking-tight">
                 {card.title}
               </span>
               <div className={`p-2 rounded-lg border ${card.iconBg}`}>
@@ -122,19 +122,19 @@ export function ExecutiveKpiCards({ data }: ExecutiveKpiCardsProps) {
             </div>
 
             <div className="space-y-1">
-              <div className="text-2xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
+              <div className="text-2xl font-extrabold text-slate-900 tracking-tight group-hover:text-blue-700 transition-colors font-mono">
                 {card.value}
               </div>
-              <p className="text-[11px] text-slate-400 leading-tight">
+              <p className="text-[11px] text-slate-500 leading-tight font-medium">
                 {card.subtext}
               </p>
             </div>
 
-            <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center gap-1.5 text-[11px] font-medium text-slate-400">
+            <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-slate-600">
               {card.trendUp ? (
-                <TrendingUp className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <TrendingUp className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
               ) : (
-                <TrendingDown className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <TrendingDown className="w-3.5 h-3.5 text-rose-600 shrink-0" />
               )}
               <span className="truncate">{card.trend}</span>
             </div>

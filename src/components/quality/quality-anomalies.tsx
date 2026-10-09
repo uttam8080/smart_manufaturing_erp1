@@ -23,30 +23,30 @@ export function QualityAnomalies({
   onInvestigateProduct,
 }: QualityAnomaliesProps) {
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 sm:p-6 backdrop-blur-sm shadow-md space-y-5">
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm space-y-5">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800/80">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/10 text-cyan-400 border border-cyan-500/30">
+          <div className="p-2 rounded-lg bg-cyan-50 text-cyan-700 border border-cyan-200">
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-lg font-bold text-white tracking-tight">
+              <h3 className="text-lg font-bold text-slate-900 tracking-tight">
                 Quality Anomalies
               </h3>
-              <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+              <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-cyan-50 text-cyan-800 border border-cyan-200">
                 AI Pattern Engine (Prototype)
               </span>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-600 font-medium">
               Statistical deviation triggers and automated defect clustering alerts across manufacturing bays
             </p>
           </div>
         </div>
 
-        <div className="text-xs text-slate-500 flex items-center gap-1.5 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
-          <ShieldAlert className="w-4 h-4 text-cyan-400" />
+        <div className="text-xs font-semibold text-slate-700 flex items-center gap-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+          <ShieldAlert className="w-4 h-4 text-cyan-600" />
           <span>Continuous Anomaly Surveillance</span>
         </div>
       </div>
@@ -56,25 +56,25 @@ export function QualityAnomalies({
         {anomalies.map((anom) => (
           <div
             key={anom.id}
-            className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between space-y-3 relative overflow-hidden group"
+            className="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition-all flex flex-col justify-between space-y-3 relative overflow-hidden group shadow-xs"
           >
             {/* Top row */}
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 flex-wrap">
                   <DefectSeverityBadge severity={anom.severity} />
-                  <span className="font-semibold text-white text-sm">
+                  <span className="font-bold text-slate-900 text-sm">
                     {anom.product}
                   </span>
                 </div>
                 {anom.machineName && (
-                  <div className="flex items-center gap-2 text-xs text-slate-400">
+                  <div className="flex items-center gap-2 text-xs text-slate-600 font-medium">
                     <span className="flex items-center gap-1">
                       <Cpu className="w-3.5 h-3.5 text-slate-500" />
                       {anom.machineName}
                     </span>
                     <span>•</span>
-                    <span className="flex items-center gap-1 font-mono text-[11px]">
+                    <span className="flex items-center gap-1 font-mono text-[11px] text-slate-600">
                       <Calendar className="w-3 h-3 text-slate-500" />
                       {anom.detectedAt}
                     </span>
@@ -83,29 +83,29 @@ export function QualityAnomalies({
               </div>
 
               {anom.confidenceScore && (
-                <span className="text-[11px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-800/40">
+                <span className="text-[11px] font-mono font-bold text-cyan-800 bg-cyan-100 px-2 py-0.5 rounded border border-cyan-200">
                   {anom.confidenceScore}% Conf
                 </span>
               )}
             </div>
 
             {/* Reason */}
-            <div className="p-3 rounded-lg bg-slate-900 border border-slate-800/90 text-xs">
-              <span className="text-slate-400 block font-medium mb-1">
+            <div className="p-3 rounded-lg bg-white border border-slate-200 text-xs">
+              <span className="text-slate-700 block font-bold mb-1">
                 Detected Pattern / Anomaly:
               </span>
-              <p className="text-slate-200 leading-relaxed font-medium">
+              <p className="text-slate-800 leading-relaxed font-medium">
                 {anom.reason}
               </p>
             </div>
 
             {/* Recommended Action */}
-            <div className="p-3 rounded-lg bg-cyan-950/20 border border-cyan-800/30 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="p-3 rounded-lg bg-cyan-50/80 border border-cyan-200 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <span className="text-cyan-400 block font-semibold mb-0.5">
+                <span className="text-cyan-900 block font-bold mb-0.5">
                   Recommended Action:
                 </span>
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-slate-800 font-medium leading-relaxed">
                   {anom.recommendedAction}
                 </p>
               </div>
@@ -114,7 +114,7 @@ export function QualityAnomalies({
                 <button
                   type="button"
                   onClick={() => onInvestigateProduct(anom.product)}
-                  className="self-end sm:self-center shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 transition-colors"
+                  className="self-end sm:self-center shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold bg-cyan-600 hover:bg-cyan-700 text-white transition-colors cursor-pointer shadow-xs"
                 >
                   <span>Filter SKU</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -126,11 +126,11 @@ export function QualityAnomalies({
       </div>
 
       {/* Prototype AI Disclaimer */}
-      <div className="p-3 rounded-xl bg-slate-950/50 border border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
+      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs text-slate-600 font-medium">
         <span>
           Prototype ML inference layer. Simulated unsupervised clustering and multivariate SPC thresholding.
         </span>
-        <span className="text-cyan-400 font-mono">Service: qa_anomaly_detector_v1</span>
+        <span className="text-cyan-800 font-mono font-bold">Service: qa_anomaly_detector_v1</span>
       </div>
     </div>
   );

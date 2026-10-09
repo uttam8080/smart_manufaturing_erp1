@@ -27,22 +27,22 @@ export function LeaveRequests({ requests, onApprove, onReject }: LeaveRequestsPr
     switch (status) {
       case "Approved":
         return (
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-            <CheckCircle2 className="w-3 h-3" />
+          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-300">
+            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
             Approved
           </span>
         );
       case "Rejected":
         return (
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-full border border-rose-500/20">
-            <XCircle className="w-3 h-3" />
+          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-rose-800 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-300">
+            <XCircle className="w-3 h-3 text-rose-600" />
             Rejected
           </span>
         );
       case "Pending":
         return (
-          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-            <Clock className="w-3 h-3" />
+          <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-300">
+            <Clock className="w-3 h-3 text-amber-600" />
             Pending
           </span>
         );
@@ -52,41 +52,41 @@ export function LeaveRequests({ requests, onApprove, onReject }: LeaveRequestsPr
   const getLeaveTypeBadge = (type: LeaveRequestRecord["leaveType"]) => {
     switch (type) {
       case "Sick":
-        return <span className="px-2 py-0.5 rounded text-[11px] bg-rose-500/10 text-rose-400 border border-rose-500/20 font-medium">Sick</span>;
+        return <span className="px-2 py-0.5 rounded-lg text-[11px] bg-rose-50 text-rose-800 border border-rose-300 font-bold">Sick</span>;
       case "Casual":
-        return <span className="px-2 py-0.5 rounded text-[11px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-medium">Casual</span>;
+        return <span className="px-2 py-0.5 rounded-lg text-[11px] bg-cyan-50 text-cyan-800 border border-cyan-300 font-bold">Casual</span>;
       case "Earned":
-        return <span className="px-2 py-0.5 rounded text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">Earned</span>;
+        return <span className="px-2 py-0.5 rounded-lg text-[11px] bg-emerald-50 text-emerald-800 border border-emerald-300 font-bold">Earned</span>;
       case "Emergency":
-        return <span className="px-2 py-0.5 rounded text-[11px] bg-amber-500/10 text-amber-400 border border-amber-500/20 font-medium">Emergency</span>;
+        return <span className="px-2 py-0.5 rounded-lg text-[11px] bg-amber-50 text-amber-800 border border-amber-300 font-bold">Emergency</span>;
     }
   };
 
   return (
-    <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 backdrop-blur-sm shadow-xl flex flex-col justify-between">
+    <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between">
       <div>
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-700/40">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
               <Calendar className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-semibold text-slate-100">Leave Requests</h3>
-              <p className="text-xs text-slate-400">Employee leave applications, schedule coverage & approval workflows</p>
+              <h3 className="text-base font-bold text-slate-900">Leave Requests</h3>
+              <p className="text-xs text-slate-600 font-medium">Employee leave applications, schedule coverage & approval workflows</p>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
             {pendingCount > 0 && (
-              <span className="text-xs font-semibold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-lg border border-amber-500/20 flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5" />
+              <span className="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-xl border border-amber-300 flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-amber-600" />
                 {pendingCount} Awaiting Decision
               </span>
             )}
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="bg-slate-900 border border-slate-700 text-xs text-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-cyan-500"
+              className="bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-800 rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-cyan-600"
             >
               <option value="All">All Statuses</option>
               <option value="Pending">Pending</option>
@@ -97,9 +97,9 @@ export function LeaveRequests({ requests, onApprove, onReject }: LeaveRequestsPr
         </div>
 
         {/* Requests Table */}
-        <div className="overflow-x-auto rounded-lg border border-slate-700/50">
+        <div className="overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-700/50">
+            <thead className="bg-slate-50 text-slate-700 uppercase tracking-wider text-[10px] font-bold border-b border-slate-200">
               <tr>
                 <th className="py-3 px-3">Req ID</th>
                 <th className="py-3 px-3">Employee</th>
@@ -112,36 +112,36 @@ export function LeaveRequests({ requests, onApprove, onReject }: LeaveRequestsPr
                 <th className="py-3 px-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/80">
+            <tbody className="divide-y divide-slate-100 text-slate-800">
               {filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={9} className="py-8 text-center text-slate-500">
+                  <td colSpan={9} className="py-8 text-center text-slate-500 font-medium">
                     No leave requests match the selected filter.
                   </td>
                 </tr>
               ) : (
                 filtered.map((item) => (
-                  <tr key={item.id} className="hover:bg-slate-750/30 transition-colors">
-                    <td className="py-3 px-3 font-mono font-bold text-cyan-400">{item.requestId}</td>
-                    <td className="py-3 px-3 font-medium text-slate-200">
+                  <tr key={item.id} className="hover:bg-slate-50 transition-colors">
+                    <td className="py-3 px-3 font-mono font-bold text-cyan-800">{item.requestId}</td>
+                    <td className="py-3 px-3 font-bold text-slate-900">
                       <div>{item.employeeName}</div>
-                      <div className="text-[10px] text-slate-500 font-mono">{item.employeeId}</div>
+                      <div className="text-[10px] text-slate-500 font-mono font-medium">{item.employeeId}</div>
                     </td>
                     <td className="py-3 px-3">
-                      <span className="px-2 py-0.5 rounded text-[11px] bg-slate-900 text-slate-300 border border-slate-700">
+                      <span className="px-2 py-0.5 rounded-lg text-[11px] font-bold bg-slate-100 text-slate-800 border border-slate-200">
                         {item.department}
                       </span>
                     </td>
                     <td className="py-3 px-3">{getLeaveTypeBadge(item.leaveType)}</td>
-                    <td className="py-3 px-3 font-mono text-[11px] text-slate-300">
+                    <td className="py-3 px-3 font-mono text-[11px] text-slate-700 font-medium">
                       <div>{item.startDate}</div>
                       <div className="text-[10px] text-slate-500">to {item.endDate}</div>
                     </td>
-                    <td className="py-3 px-3 text-center font-bold text-slate-200">{item.daysCount} d</td>
-                    <td className="py-3 px-3 max-w-xs text-slate-300 text-[11px] leading-relaxed">
+                    <td className="py-3 px-3 text-center font-bold text-slate-900">{item.daysCount} d</td>
+                    <td className="py-3 px-3 max-w-xs text-slate-700 font-medium text-[11px] leading-relaxed">
                       <div className="line-clamp-2" title={item.reason}>{item.reason}</div>
                       {item.rejectionReason && (
-                        <div className="mt-1 text-[10px] text-rose-400/90 italic line-clamp-1" title={item.rejectionReason}>
+                        <div className="mt-1 text-[10px] text-rose-700 font-bold italic line-clamp-1" title={item.rejectionReason}>
                           Rejection: {item.rejectionReason}
                         </div>
                       )}
@@ -152,7 +152,7 @@ export function LeaveRequests({ requests, onApprove, onReject }: LeaveRequestsPr
                         <button
                           onClick={() => setSelectedRequestForDetails(item)}
                           title="View Request Details"
-                          className="p-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-cyan-400 border border-slate-700 transition-colors"
+                          className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-cyan-800 border border-slate-200 transition-colors"
                         >
                           <Eye className="w-3.5 h-3.5" />
                         </button>
@@ -161,14 +161,14 @@ export function LeaveRequests({ requests, onApprove, onReject }: LeaveRequestsPr
                             <button
                               onClick={() => onApprove(item.id)}
                               title="Approve Leave"
-                              className="p-1.5 rounded bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-colors"
+                              className="p-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 transition-colors"
                             >
                               <Check className="w-3.5 h-3.5" />
                             </button>
                             <button
                               onClick={() => setRejectingRequest(item)}
                               title="Reject Leave"
-                              className="p-1.5 rounded bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 transition-colors"
+                              className="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-300 transition-colors"
                             >
                               <X className="w-3.5 h-3.5" />
                             </button>
@@ -186,48 +186,48 @@ export function LeaveRequests({ requests, onApprove, onReject }: LeaveRequestsPr
 
       {/* Details View Modal */}
       {selectedRequestForDetails && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-base font-semibold text-slate-100">Leave Request Details</h3>
-              <span className="font-mono text-xs text-cyan-400 font-bold">{selectedRequestForDetails.requestId}</span>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-md p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+              <h3 className="text-base font-bold text-slate-900">Leave Request Details</h3>
+              <span className="font-mono text-xs text-cyan-800 font-bold">{selectedRequestForDetails.requestId}</span>
             </div>
-            <div className="space-y-2.5 text-xs text-slate-300">
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Employee:</span>
-                <span className="font-semibold text-slate-200">{selectedRequestForDetails.employeeName} ({selectedRequestForDetails.employeeId})</span>
+            <div className="space-y-2.5 text-xs text-slate-800">
+              <div className="flex justify-between py-1 border-b border-slate-100">
+                <span className="text-slate-600 font-medium">Employee:</span>
+                <span className="font-bold text-slate-900">{selectedRequestForDetails.employeeName} ({selectedRequestForDetails.employeeId})</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Department:</span>
-                <span className="text-slate-200">{selectedRequestForDetails.department}</span>
+              <div className="flex justify-between py-1 border-b border-slate-100">
+                <span className="text-slate-600 font-medium">Department:</span>
+                <span className="font-bold text-slate-900">{selectedRequestForDetails.department}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Leave Type:</span>
-                <span className="text-slate-200">{selectedRequestForDetails.leaveType}</span>
+              <div className="flex justify-between py-1 border-b border-slate-100">
+                <span className="text-slate-600 font-medium">Leave Type:</span>
+                <span className="font-bold text-slate-900">{selectedRequestForDetails.leaveType}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Duration:</span>
-                <span className="text-slate-200">{selectedRequestForDetails.startDate} to {selectedRequestForDetails.endDate} ({selectedRequestForDetails.daysCount} days)</span>
+              <div className="flex justify-between py-1 border-b border-slate-100">
+                <span className="text-slate-600 font-medium">Duration:</span>
+                <span className="font-bold text-slate-900">{selectedRequestForDetails.startDate} to {selectedRequestForDetails.endDate} ({selectedRequestForDetails.daysCount} days)</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Applied On:</span>
-                <span className="text-slate-200">{selectedRequestForDetails.appliedDate}</span>
+              <div className="flex justify-between py-1 border-b border-slate-100">
+                <span className="text-slate-600 font-medium">Applied On:</span>
+                <span className="font-bold text-slate-900">{selectedRequestForDetails.appliedDate}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-slate-800/60">
-                <span className="text-slate-400">Status:</span>
+              <div className="flex justify-between py-1 border-b border-slate-100">
+                <span className="text-slate-600 font-medium">Status:</span>
                 <div>{getStatusBadge(selectedRequestForDetails.status)}</div>
               </div>
               <div className="pt-1">
-                <span className="text-slate-400 block mb-1">Employee Reason:</span>
-                <div className="p-2.5 rounded bg-slate-950/80 border border-slate-800 text-slate-200 italic">
-                  "{selectedRequestForDetails.reason}"
+                <span className="text-slate-600 font-medium block mb-1">Employee Reason:</span>
+                <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 italic">
+                  &ldquo;{selectedRequestForDetails.reason}&rdquo;
                 </div>
               </div>
               {selectedRequestForDetails.rejectionReason && (
                 <div className="pt-1">
-                  <span className="text-rose-400 block mb-1">Rejection Reason:</span>
-                  <div className="p-2.5 rounded bg-rose-950/20 border border-rose-900/40 text-rose-300">
-                    "{selectedRequestForDetails.rejectionReason}"
+                  <span className="text-rose-800 font-bold block mb-1">Rejection Reason:</span>
+                  <div className="p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-900">
+                    &ldquo;{selectedRequestForDetails.rejectionReason}&rdquo;
                   </div>
                 </div>
               )}
@@ -235,7 +235,7 @@ export function LeaveRequests({ requests, onApprove, onReject }: LeaveRequestsPr
             <div className="flex justify-end pt-3">
               <button
                 onClick={() => setSelectedRequestForDetails(null)}
-                className="px-4 py-2 text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition-colors"
+                className="px-4 py-2 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl border border-slate-200 transition-colors"
               >
                 Close
               </button>

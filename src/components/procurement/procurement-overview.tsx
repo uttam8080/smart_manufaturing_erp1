@@ -50,20 +50,20 @@ export function ProcurementOverview({ suppliers, orders }: ProcurementOverviewPr
   };
 
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 sm:p-6 backdrop-blur-sm shadow-md">
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-800/80 mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200 mb-5">
         <div>
-          <h3 className="text-base font-bold text-white tracking-tight">
+          <h3 className="text-base font-bold text-slate-900 tracking-tight">
             Procurement Overview & Spend Health
           </h3>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-600 font-medium">
             Committed order allocations, supplier performance indices, and liquidity tracking
           </p>
         </div>
 
-        <div className="flex items-center gap-1.5 text-xs text-slate-400 bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
-          <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
+          <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
           <span>Real-time PO Reconciliation</span>
         </div>
       </div>
@@ -71,75 +71,75 @@ export function ProcurementOverview({ suppliers, orders }: ProcurementOverviewPr
       {/* Metric Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
         {/* Total Spend */}
-        <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <IndianRupee className="w-3.5 h-3.5 text-purple-400" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold mb-1">
+            <IndianRupee className="w-3.5 h-3.5 text-purple-600" />
             <span>Total Spend</span>
           </div>
-          <div className="text-lg font-bold text-white">
+          <div className="text-lg font-extrabold text-slate-900">
             {formatCurrency(totalSpend)}
           </div>
-          <span className="text-[10px] text-slate-500 font-mono">6 Purchase Orders</span>
+          <span className="text-[10px] text-slate-500 font-bold font-mono">6 Purchase Orders</span>
         </div>
 
         {/* Approved Spend */}
-        <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold mb-1">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
             <span>Approved Spend</span>
           </div>
-          <div className="text-lg font-bold text-emerald-400">
+          <div className="text-lg font-extrabold text-emerald-700">
             {formatCurrency(approvedSpend)}
           </div>
-          <span className="text-[10px] text-slate-500 font-mono">Committed Capital</span>
+          <span className="text-[10px] text-slate-500 font-bold font-mono">Committed Capital</span>
         </div>
 
         {/* Pending Spend */}
-        <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Clock className="w-3.5 h-3.5 text-amber-400" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold mb-1">
+            <Clock className="w-3.5 h-3.5 text-amber-600" />
             <span>Pending Spend</span>
           </div>
-          <div className="text-lg font-bold text-amber-400">
+          <div className="text-lg font-extrabold text-amber-700">
             {formatCurrency(pendingSpend)}
           </div>
-          <span className="text-[10px] text-slate-500 font-mono">Awaiting Sign-off</span>
+          <span className="text-[10px] text-slate-500 font-bold font-mono">Awaiting Sign-off</span>
         </div>
 
         {/* Avg PO Value */}
-        <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Calculator className="w-3.5 h-3.5 text-cyan-400" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold mb-1">
+            <Calculator className="w-3.5 h-3.5 text-cyan-600" />
             <span>Avg PO Value</span>
           </div>
-          <div className="text-lg font-bold text-cyan-300">
+          <div className="text-lg font-extrabold text-cyan-800">
             {formatCurrency(avgPoValue)}
           </div>
-          <span className="text-[10px] text-slate-500 font-mono">Per Work Order</span>
+          <span className="text-[10px] text-slate-500 font-bold font-mono">Per Work Order</span>
         </div>
 
         {/* On-Time Delivery */}
-        <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Truck className="w-3.5 h-3.5 text-blue-400" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold mb-1">
+            <Truck className="w-3.5 h-3.5 text-blue-600" />
             <span>On-Time Rate</span>
           </div>
-          <div className="text-lg font-bold text-blue-400">
+          <div className="text-lg font-extrabold text-blue-700">
             {avgOnTimeRate}%
           </div>
-          <span className="text-[10px] text-slate-500 font-mono">Target: &gt;90%</span>
+          <span className="text-[10px] text-slate-500 font-bold font-mono">Target: &gt;90%</span>
         </div>
 
         {/* Supplier Count */}
-        <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Users className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+          <div className="flex items-center gap-1.5 text-xs text-slate-700 font-bold mb-1">
+            <Users className="w-3.5 h-3.5 text-emerald-600" />
             <span>Active Suppliers</span>
           </div>
-          <div className="text-lg font-bold text-white">
+          <div className="text-lg font-extrabold text-slate-900">
             {suppliers.length}
           </div>
-          <span className="text-[10px] text-slate-500 font-mono">100% Verified</span>
+          <span className="text-[10px] text-slate-500 font-bold font-mono">100% Verified</span>
         </div>
       </div>
     </div>

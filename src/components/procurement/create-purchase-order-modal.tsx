@@ -124,24 +124,24 @@ export function CreatePurchaseOrderModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden p-6 max-h-[92vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden p-6 max-h-[92vh] flex flex-col text-slate-900">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800 shrink-0">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200 shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+            <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700">
               <ShoppingCart className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white">Create Purchase Order</h3>
-              <p className="text-xs text-slate-400">
+              <h3 className="text-lg font-bold text-slate-900">Create Purchase Order</h3>
+              <p className="text-xs text-slate-600 font-medium">
                 Generate official vendor order with commercial tax calculations
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -151,13 +151,13 @@ export function CreatePurchaseOrderModal({
         <form onSubmit={handleSubmit} className="mt-5 space-y-4 text-xs overflow-y-auto flex-1 pr-1">
           {/* Supplier Selection */}
           <div>
-            <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
               Contracted Supplier *
             </label>
             <select
               value={selectedSupplierId}
               onChange={(e) => setSelectedSupplierId(e.target.value)}
-              className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+              className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
               required
             >
               {suppliers.map((s) => (
@@ -171,39 +171,39 @@ export function CreatePurchaseOrderModal({
           {/* Dates & Payment Terms */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 PO Date *
               </label>
               <input
                 type="date"
                 value={orderDate}
                 onChange={(e) => setOrderDate(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Expected Delivery *
               </label>
               <input
                 type="date"
                 value={expectedDelivery}
                 onChange={(e) => setExpectedDelivery(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Payment Terms *
               </label>
               <select
                 value={paymentTerms}
                 onChange={(e) => setPaymentTerms(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
               >
                 <option value="Net 15 Days">Net 15 Days</option>
                 <option value="Net 30 Days">Net 30 Days</option>
@@ -217,7 +217,7 @@ export function CreatePurchaseOrderModal({
           {/* Material & Category */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Material / Line Item *
               </label>
               <input
@@ -225,19 +225,19 @@ export function CreatePurchaseOrderModal({
                 value={material}
                 onChange={(e) => setMaterial(e.target.value)}
                 placeholder="e.g. Wheat Flour (Refined)"
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                 Category *
               </label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value as MaterialCategory)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-slate-200 text-xs focus:outline-none focus:border-cyan-500"
+                className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-slate-900 font-semibold text-xs focus:outline-none focus:border-cyan-500 focus:bg-white cursor-pointer"
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
@@ -249,9 +249,9 @@ export function CreatePurchaseOrderModal({
           </div>
 
           {/* Quantity, Unit, Price, Tax */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 mb-1">
                 Quantity *
               </label>
               <input
@@ -259,19 +259,19 @@ export function CreatePurchaseOrderModal({
                 min="1"
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-100 font-mono font-bold"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-mono font-bold"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 mb-1">
                 Unit *
               </label>
               <select
                 value={unit}
                 onChange={(e) => setUnit(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-200"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-semibold"
               >
                 <option value="kg">kg</option>
                 <option value="boxes">boxes</option>
@@ -282,7 +282,7 @@ export function CreatePurchaseOrderModal({
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-emerald-400 mb-1">
+              <label className="block text-[11px] font-bold text-emerald-700 mb-1">
                 Unit Price (₹) *
               </label>
               <input
@@ -291,19 +291,19 @@ export function CreatePurchaseOrderModal({
                 step="0.5"
                 value={unitPrice}
                 onChange={(e) => setUnitPrice(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-slate-900 border border-emerald-500/40 rounded-lg text-emerald-400 font-mono font-bold"
+                className="w-full px-3 py-2 bg-white border border-emerald-300 rounded-lg text-emerald-700 font-mono font-bold"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+              <label className="block text-[11px] font-bold text-slate-700 mb-1">
                 GST / Tax (%) *
               </label>
               <select
                 value={taxPercent}
                 onChange={(e) => setTaxPercent(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-200 font-mono"
+                className="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-slate-900 font-mono font-semibold"
               >
                 <option value="0">0% (Nil)</option>
                 <option value="5">5% (GST)</option>
@@ -315,35 +315,35 @@ export function CreatePurchaseOrderModal({
           </div>
 
           {/* Pricing Summary Box */}
-          <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5 text-xs">
-            <div className="flex justify-between text-slate-400">
+          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5 text-xs">
+            <div className="flex justify-between text-slate-600 font-medium">
               <span>Subtotal:</span>
-              <span className="font-mono">₹{subtotal.toLocaleString()}</span>
+              <span className="font-mono font-bold text-slate-900">₹{subtotal.toLocaleString()}</span>
             </div>
-            <div className="flex justify-between text-slate-400">
+            <div className="flex justify-between text-slate-600 font-medium">
               <span>Tax ({taxPercent}%):</span>
-              <span className="font-mono">₹{taxAmount.toLocaleString()}</span>
+              <span className="font-mono font-bold text-slate-900">₹{taxAmount.toLocaleString()}</span>
             </div>
-            <div className="flex justify-between pt-1.5 border-t border-slate-800 font-bold text-white">
+            <div className="flex justify-between pt-1.5 border-t border-slate-200 font-bold text-slate-900">
               <span>Grand Total PO Amount:</span>
-              <span className="text-emerald-400 font-mono text-sm">
+              <span className="text-emerald-700 font-mono text-sm font-extrabold">
                 ₹{totalAmount.toLocaleString()}
               </span>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800 shrink-0">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200 shrink-0">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+              className="px-4 py-2 text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer border border-slate-300"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 text-xs font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:bg-emerald-500 rounded-lg transition-colors shadow-lg shadow-emerald-500/20 flex items-center gap-1.5"
+              className="px-5 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-lg transition-colors shadow-md shadow-emerald-600/20 flex items-center gap-1.5 cursor-pointer"
             >
               <ShoppingCart className="w-4 h-4" />
               <span>Issue Purchase Order</span>

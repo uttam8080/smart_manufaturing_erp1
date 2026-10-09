@@ -327,16 +327,16 @@ export default function InventoryPage() {
         )}
 
         {/* 1. Page Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-800/80">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                <Boxes className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100/80 text-emerald-800 border border-emerald-200">
+                <Boxes className="w-3.5 h-3.5 text-emerald-700" />
                 Warehouse & Supply Chain
               </span>
               {isDbLive ? (
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-                  <Database className="w-3 h-3 text-cyan-400" />
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-cyan-50 text-cyan-800 border border-cyan-200">
+                  <Database className="w-3 h-3 text-cyan-600" />
                   Live Connected
                 </span>
               ) : (
@@ -345,10 +345,10 @@ export default function InventoryPage() {
                 </span>
               )}
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
               Inventory Management
             </h1>
-            <p className="text-sm text-slate-400 mt-0.5">
+            <p className="text-sm text-slate-600 mt-0.5 font-medium">
               Live stock levels, material availability and warehouse transactions.
             </p>
           </div>
@@ -360,10 +360,10 @@ export default function InventoryPage() {
                 showNotification("Synchronizing latest stock levels...");
               }}
               disabled={isLoading}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-semibold text-slate-200 transition disabled:opacity-50"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 transition shadow-xs disabled:opacity-50"
               title="Refresh inventory levels"
             >
-              <RotateCw className={`w-3.5 h-3.5 text-cyan-400 ${isLoading ? "animate-spin" : ""}`} />
+              <RotateCw className={`w-3.5 h-3.5 text-cyan-600 ${isLoading ? "animate-spin" : ""}`} />
               <span>{isLoading ? "Syncing..." : "Refresh"}</span>
             </button>
 
@@ -373,7 +373,7 @@ export default function InventoryPage() {
                   setPurchasingItem(computedItems[0]);
                 }
               }}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-xs font-bold text-white shadow-lg shadow-emerald-500/20 transition active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-xs font-bold text-white shadow-md shadow-emerald-600/20 transition active:scale-95"
             >
               <Plus className="w-4 h-4" />
               <span>Purchase Requisition</span>

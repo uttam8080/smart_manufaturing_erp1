@@ -36,10 +36,10 @@ export function ProductionOrdersTable({
 }: ProductionOrdersTableProps) {
   if (orders.length === 0) {
     return (
-      <div className="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 text-center space-y-2">
-        <ClipboardList className="w-8 h-8 text-slate-500 mx-auto" />
-        <h3 className="text-sm font-semibold text-white">No production orders found</h3>
-        <p className="text-xs text-slate-400">
+      <div className="p-8 rounded-2xl bg-white border border-slate-200 text-center space-y-2 shadow-sm">
+        <ClipboardList className="w-8 h-8 text-slate-400 mx-auto" />
+        <h3 className="text-sm font-bold text-slate-900">No production orders found</h3>
+        <p className="text-xs text-slate-500 font-medium">
           Try adjusting your search criteria or resetting your active filters.
         </p>
       </div>
@@ -47,19 +47,19 @@ export function ProductionOrdersTable({
   }
 
   return (
-    <div className="p-5 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-md space-y-4">
+    <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
       {/* Table Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h2 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <ClipboardList className="w-4 h-4 text-cyan-400" />
+          <h2 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
+            <ClipboardList className="w-4 h-4 text-cyan-600" />
             Production Orders Catalog
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-600 font-medium mt-0.5">
             Active shop floor batches, machine routing & execution state
           </p>
         </div>
-        <span className="text-xs font-mono text-cyan-400/80">
+        <span className="text-xs font-mono font-bold text-cyan-800 bg-cyan-50 px-2.5 py-0.5 rounded-full border border-cyan-200">
           {orders.length} Records Loaded
         </span>
       </div>
@@ -67,19 +67,19 @@ export function ProductionOrdersTable({
       {/* Desktop & Tablet Table View */}
       <div className="hidden md:block max-h-[520px] overflow-y-auto overflow-x-auto custom-scrollbar border border-slate-200 rounded-xl">
         <table className="w-full text-left text-xs">
-          <thead className="sticky top-0 z-10 bg-slate-50/95 backdrop-blur-xs">
-            <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider text-[10px]">
-              <th className="py-3 px-3 font-semibold">Order / Batch</th>
-              <th className="py-3 px-3 font-semibold">Product SKU</th>
-              <th className="py-3 px-3 font-semibold">Machine & Shift</th>
-              <th className="py-3 px-3 font-semibold text-right">Planned</th>
-              <th className="py-3 px-3 font-semibold text-right">Actual</th>
-              <th className="py-3 px-3 font-semibold text-center">Status</th>
-              <th className="py-3 px-3 font-semibold text-center">Priority</th>
-              <th className="py-3 px-3 font-semibold text-right">Actions</th>
+          <thead className="sticky top-0 z-10 bg-slate-50 border-b border-slate-200">
+            <tr className="text-slate-700 uppercase tracking-wider text-[10px] font-bold">
+              <th className="py-3 px-3 font-bold">Order / Batch</th>
+              <th className="py-3 px-3 font-bold">Product SKU</th>
+              <th className="py-3 px-3 font-bold">Machine & Shift</th>
+              <th className="py-3 px-3 font-bold text-right">Planned</th>
+              <th className="py-3 px-3 font-bold text-right">Actual</th>
+              <th className="py-3 px-3 font-bold text-center">Status</th>
+              <th className="py-3 px-3 font-bold text-center">Priority</th>
+              <th className="py-3 px-3 font-bold text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200">
+          <tbody className="divide-y divide-slate-100">
             {orders.map((order) => {
               const isPaused = order.status === "Paused";
               const isCompleted = order.status === "Completed";
@@ -88,45 +88,45 @@ export function ProductionOrdersTable({
               return (
                 <tr
                   key={order.id}
-                  className="hover:bg-slate-800/40 transition-colors group"
+                  className="hover:bg-slate-50/80 transition-colors group"
                 >
                   {/* Order & Batch Number */}
                   <td className="py-3.5 pr-3 whitespace-nowrap">
-                    <div className="font-mono font-bold text-cyan-400">
+                    <div className="font-mono font-bold text-cyan-800">
                       {order.orderNumber}
                     </div>
-                    <div className="text-[10px] text-slate-400 font-mono">
+                    <div className="text-[10px] text-slate-500 font-mono font-medium">
                       {order.batchNumber}
                     </div>
                   </td>
 
                   {/* Product */}
                   <td className="py-3.5 px-3">
-                    <div className="font-semibold text-slate-200">{order.product}</div>
-                    <div className="text-[10px] text-slate-500 font-mono">
+                    <div className="font-bold text-slate-900">{order.product}</div>
+                    <div className="text-[10px] text-slate-500 font-mono font-medium">
                       {order.productSku}
                     </div>
                   </td>
 
                   {/* Machine & Shift */}
                   <td className="py-3.5 px-3 whitespace-nowrap">
-                    <div className="text-slate-300 font-medium flex items-center gap-1">
-                      <Wrench className="w-3 h-3 text-slate-500" />
+                    <div className="text-slate-800 font-semibold flex items-center gap-1">
+                      <Wrench className="w-3 h-3 text-slate-400" />
                       {order.machine}
                     </div>
-                    <div className="text-[10px] text-slate-500 flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-slate-500" />
+                    <div className="text-[10px] text-slate-500 font-medium flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-slate-400" />
                       {order.shift?.includes("Shift") ? order.shift : `${order.shift || "Day"} Shift`}
                     </div>
                   </td>
 
                   {/* Planned Quantity */}
-                  <td className="py-3.5 px-3 text-right font-mono text-slate-400 whitespace-nowrap">
+                  <td className="py-3.5 px-3 text-right font-mono text-slate-600 font-medium whitespace-nowrap">
                     {order.plannedQuantity.toLocaleString()} {order.unit}
                   </td>
 
                   {/* Actual Quantity */}
-                  <td className="py-3.5 px-3 text-right font-mono font-bold text-white whitespace-nowrap">
+                  <td className="py-3.5 px-3 text-right font-mono font-bold text-slate-900 whitespace-nowrap">
                     {order.actualQuantity.toLocaleString()} {order.unit}
                   </td>
 
@@ -213,17 +213,17 @@ export function ProductionOrdersTable({
           return (
             <div
               key={order.id}
-              className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-3"
+              className="p-4 rounded-xl bg-slate-50/80 border border-slate-200 space-y-3 shadow-2xs"
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <span className="font-mono text-xs font-bold text-cyan-400">
+                  <span className="font-mono text-xs font-bold text-cyan-800">
                     {order.orderNumber}
                   </span>
-                  <h3 className="text-sm font-semibold text-white mt-0.5">
+                  <h3 className="text-sm font-bold text-slate-900 mt-0.5">
                     {order.product}
                   </h3>
-                  <span className="text-[11px] text-slate-400 font-mono">
+                  <span className="text-[11px] text-slate-500 font-mono font-medium">
                     Batch: {order.batchNumber}
                   </span>
                 </div>
@@ -234,27 +234,27 @@ export function ProductionOrdersTable({
               </div>
 
               {/* Progress & metrics */}
-              <div className="grid grid-cols-2 gap-2 text-xs py-2 border-y border-slate-800/80">
+              <div className="grid grid-cols-2 gap-2 text-xs py-2 border-y border-slate-200">
                 <div>
-                  <span className="text-[10px] uppercase text-slate-500 block">
+                  <span className="text-[10px] uppercase font-bold text-slate-500 block">
                     Planned Target
                   </span>
-                  <span className="font-mono font-bold text-slate-200">
+                  <span className="font-mono font-bold text-slate-800">
                     {order.plannedQuantity.toLocaleString()} {order.unit}
                   </span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] uppercase text-slate-500 block">
+                  <span className="text-[10px] uppercase font-bold text-slate-500 block">
                     Actual Output
                   </span>
-                  <span className="font-mono font-bold text-emerald-400">
+                  <span className="font-mono font-bold text-emerald-700">
                     {order.actualQuantity.toLocaleString()} {order.unit}
                   </span>
                 </div>
               </div>
 
               {/* Machine & Shift info */}
-              <div className="flex items-center justify-between text-[11px] text-slate-400">
+              <div className="flex items-center justify-between text-[11px] text-slate-600 font-medium">
                 <span>{order.machine}</span>
                 <span>{order.shift?.includes("Shift") ? order.shift : `${order.shift || "Day"} Shift`}</span>
               </div>
@@ -263,7 +263,7 @@ export function ProductionOrdersTable({
               <div className="flex items-center justify-end gap-2 pt-1">
                 <button
                   onClick={() => onViewOrder(order)}
-                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-xs font-semibold text-white border border-blue-600 flex items-center gap-1.5 shadow-xs"
+                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-xs font-bold text-white border border-blue-600 flex items-center gap-1.5 shadow-xs"
                 >
                   <Eye className="w-3.5 h-3.5 text-white" />
                   <span>View Details</span>

@@ -42,33 +42,33 @@ export function ProcurementSpending({ suppliers }: ProcurementSpendingProps) {
   }));
 
   return (
-    <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-5 backdrop-blur-sm shadow-xl space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-700/40">
+    <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
         <div className="flex items-center gap-2">
-          <div className="p-2 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
+          <div className="p-2 rounded-xl bg-purple-50 text-purple-600 border border-purple-200">
             <ShoppingBag className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-semibold text-slate-100">Procurement Spending & Vendor Payables</h3>
-            <p className="text-xs text-slate-400">Direct integration with Vendor Purchase Orders & material deliveries</p>
+            <h3 className="text-base font-bold text-slate-900">Procurement Spending & Vendor Payables</h3>
+            <p className="text-xs text-slate-600 font-medium">Direct integration with Vendor Purchase Orders & material deliveries</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-xs bg-slate-900/60 px-3 py-1.5 rounded-lg border border-slate-700/50">
-          <span className="text-slate-400">Total Spend: <strong className="text-white">{formatCurrency(totalProcurementSpend)}</strong></span>
-          <span className="text-slate-600">|</span>
-          <span className="text-slate-400">Settled: <strong className="text-emerald-400">{formatCurrency(totalPaid)}</strong></span>
-          <span className="text-slate-600">|</span>
-          <span className="text-slate-400">Pending: <strong className="text-amber-400">{formatCurrency(totalPending)}</strong></span>
+        <div className="flex items-center gap-3 text-xs bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200">
+          <span className="text-slate-600 font-medium">Total Spend: <strong className="text-slate-900 font-bold">{formatCurrency(totalProcurementSpend)}</strong></span>
+          <span className="text-slate-300">|</span>
+          <span className="text-slate-600 font-medium">Settled: <strong className="text-emerald-800 font-bold">{formatCurrency(totalPaid)}</strong></span>
+          <span className="text-slate-300">|</span>
+          <span className="text-slate-600 font-medium">Pending: <strong className="text-amber-800 font-bold">{formatCurrency(totalPending)}</strong></span>
         </div>
       </div>
 
       {/* Supplier Spend Summary Table & Chart Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Table View */}
-        <div className="lg:col-span-6 overflow-x-auto rounded-lg border border-slate-700/50">
+        <div className="lg:col-span-6 overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider text-[10px] border-b border-slate-700/50">
+            <thead className="bg-slate-50 text-slate-700 uppercase tracking-wider text-[10px] font-bold border-b border-slate-200">
               <tr>
                 <th className="py-3 px-3">Supplier Name</th>
                 <th className="py-3 px-2 text-center">POs</th>
@@ -77,23 +77,23 @@ export function ProcurementSpending({ suppliers }: ProcurementSpendingProps) {
                 <th className="py-3 px-3 text-right">Pending</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/80">
+            <tbody className="divide-y divide-slate-100 text-slate-800">
               {suppliers.map((s) => (
-                <tr key={s.id} className="hover:bg-slate-750/30 transition-colors">
-                  <td className="py-3 px-3 font-medium text-slate-200">
-                    <div className="font-semibold text-white">{s.supplier}</div>
-                    <div className="text-[10px] text-slate-400 truncate max-w-[200px]">{s.category}</div>
+                <tr key={s.id} className="hover:bg-slate-50 transition-colors">
+                  <td className="py-3 px-3 font-medium text-slate-900">
+                    <div className="font-bold text-slate-900">{s.supplier}</div>
+                    <div className="text-[10px] text-slate-500 truncate max-w-[200px]">{s.category}</div>
                   </td>
-                  <td className="py-3 px-2 text-center font-mono font-bold text-cyan-400">
+                  <td className="py-3 px-2 text-center font-mono font-black text-cyan-800">
                     {s.purchaseOrdersCount}
                   </td>
-                  <td className="py-3 px-3 text-right font-mono font-bold text-slate-100">
+                  <td className="py-3 px-3 text-right font-mono font-black text-slate-900">
                     {formatCurrency(s.totalSpend)}
                   </td>
-                  <td className="py-3 px-3 text-right font-mono text-emerald-400 font-semibold">
+                  <td className="py-3 px-3 text-right font-mono text-emerald-800 font-bold">
                     {formatCurrency(s.paidAmount)}
                   </td>
-                  <td className="py-3 px-3 text-right font-mono text-amber-400 font-semibold">
+                  <td className="py-3 px-3 text-right font-mono text-amber-800 font-bold">
                     {formatCurrency(s.pendingAmount)}
                   </td>
                 </tr>
@@ -103,30 +103,30 @@ export function ProcurementSpending({ suppliers }: ProcurementSpendingProps) {
         </div>
 
         {/* Bar Chart View */}
-        <div className="lg:col-span-6 bg-slate-900/60 border border-slate-700/50 rounded-xl p-4 flex flex-col justify-between">
+        <div className="lg:col-span-6 bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between mb-2">
-            <h4 className="text-xs font-semibold text-slate-200">
+            <h4 className="text-xs font-bold text-slate-900">
               Vendor Spending & Disbursement Status
             </h4>
-            <span className="text-[10px] text-slate-400">Paid vs Pending Balance</span>
+            <span className="text-[10px] text-slate-600 font-medium">Paid vs Pending Balance</span>
           </div>
 
           <div className="h-56 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.4} vertical={false} />
-                <XAxis dataKey="name" stroke="#94a3b8" fontSize={10} tickLine={false} />
-                <YAxis stroke="#94a3b8" fontSize={10} tickLine={false} tickFormatter={formatLakhs} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
+                <XAxis dataKey="name" stroke="#64748b" fontSize={10} tickLine={false} />
+                <YAxis stroke="#64748b" fontSize={10} tickLine={false} tickFormatter={formatLakhs} />
                 <Tooltip
                   content={({ active, payload }) => {
                     if (active && payload && payload.length) {
                       const item = payload[0].payload;
                       return (
-                        <div className="bg-slate-900/95 border border-slate-700 p-2.5 rounded-lg shadow-xl text-xs space-y-1">
-                          <p className="font-semibold text-slate-200">{item.fullName}</p>
-                          <p className="text-emerald-400">Paid Amount: <strong>{formatCurrency(item.paid)}</strong></p>
-                          <p className="text-amber-400">Pending Amount: <strong>{formatCurrency(item.pending)}</strong></p>
-                          <p className="text-slate-300">Total Spend: <strong>{formatCurrency(item.total)}</strong></p>
+                        <div className="bg-white border border-slate-200 p-2.5 rounded-xl shadow-xl text-xs space-y-1 text-slate-900">
+                          <p className="font-bold text-slate-900">{item.fullName}</p>
+                          <p className="text-emerald-700 font-bold">Paid Amount: <span>{formatCurrency(item.paid)}</span></p>
+                          <p className="text-amber-700 font-bold">Pending Amount: <span>{formatCurrency(item.pending)}</span></p>
+                          <p className="text-slate-600 font-medium">Total Spend: <span>{formatCurrency(item.total)}</span></p>
                         </div>
                       );
                     }
@@ -134,8 +134,8 @@ export function ProcurementSpending({ suppliers }: ProcurementSpendingProps) {
                   }}
                 />
                 <Legend verticalAlign="top" align="right" wrapperStyle={{ fontSize: "10px", paddingBottom: "5px" }} />
-                <Bar dataKey="paid" name="Settled Payout" fill="#10b981" stackId="a" radius={[0, 0, 0, 0]} />
-                <Bar dataKey="pending" name="Pending Invoice" fill="#f59e0b" stackId="a" radius={[3, 3, 0, 0]} />
+                <Bar dataKey="paid" name="Settled Payout" fill="#059669" stackId="a" radius={[0, 0, 0, 0]} />
+                <Bar dataKey="pending" name="Pending Invoice" fill="#d97706" stackId="a" radius={[3, 3, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

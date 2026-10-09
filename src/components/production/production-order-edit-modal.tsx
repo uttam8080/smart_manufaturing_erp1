@@ -46,17 +46,17 @@ export function ProductionOrderEditModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-      <div className="relative w-full max-w-md rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl p-6 text-slate-100 space-y-5">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in">
+      <div className="relative w-full max-w-md rounded-2xl bg-white border border-slate-200 shadow-2xl p-6 text-slate-900 space-y-5">
         {/* Header */}
-        <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-3">
+        <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <div className="p-2 rounded-xl bg-cyan-50 text-cyan-700 border border-cyan-200">
               <Edit2 className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Edit Production Order</h3>
-              <p className="text-xs text-slate-400 font-mono">
+              <h3 className="text-base font-bold text-slate-900">Edit Production Order</h3>
+              <p className="text-xs text-slate-500 font-mono font-medium">
                 {order.orderNumber} • {order.product}
               </p>
             </div>
@@ -64,7 +64,7 @@ export function ProductionOrderEditModal({
 
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
           >
             <X className="w-5 h-5" />
           </button>
@@ -74,7 +74,7 @@ export function ProductionOrderEditModal({
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           {/* Planned Quantity */}
           <div className="space-y-1.5">
-            <label className="font-semibold text-slate-300 uppercase tracking-wider text-[10px]">
+            <label className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">
               Planned Target Quantity ({order.unit})
             </label>
             <input
@@ -84,19 +84,19 @@ export function ProductionOrderEditModal({
               required
               value={plannedQuantity}
               onChange={(e) => setPlannedQuantity(Number(e.target.value))}
-              className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 font-mono focus:outline-none focus:ring-1 focus:ring-cyan-500"
+              className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-mono font-bold focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
           {/* Priority */}
           <div className="space-y-1.5">
-            <label className="font-semibold text-slate-300 uppercase tracking-wider text-[10px]">
+            <label className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">
               Scheduling Priority
             </label>
             <select
               value={priority}
               onChange={(e) => setPriority(e.target.value as ProductionPriority)}
-              className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 font-medium focus:outline-none focus:ring-1 focus:ring-cyan-500 cursor-pointer"
+              className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-medium focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer"
             >
               <option value="Low">Low</option>
               <option value="Normal">Normal</option>
@@ -107,7 +107,7 @@ export function ProductionOrderEditModal({
 
           {/* Operator Instructions & Notes */}
           <div className="space-y-1.5">
-            <label className="font-semibold text-slate-300 uppercase tracking-wider text-[10px]">
+            <label className="font-bold text-slate-700 uppercase tracking-wider text-[10px]">
               Work Order Instructions & Notes
             </label>
             <textarea
@@ -115,22 +115,22 @@ export function ProductionOrderEditModal({
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Add shop floor instructions..."
-              className="w-full px-3 py-2 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+              className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
           {/* Footer Actions */}
-          <div className="pt-3 border-t border-slate-800 flex justify-end gap-2">
+          <div className="pt-3 border-t border-slate-100 flex justify-end gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition"
+              className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 transition"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-xs font-semibold text-white shadow-md transition"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-xs font-bold text-white shadow-xs transition"
             >
               <Save className="w-3.5 h-3.5" />
               <span>Save Changes</span>

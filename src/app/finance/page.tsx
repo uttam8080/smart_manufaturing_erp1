@@ -256,15 +256,15 @@ export default function FinancePage() {
     <ErpLayout>
       <div className="space-y-6">
         {/* Page Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-700/60">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200 shadow-sm">
                 <IndianRupee className="w-6 h-6" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-slate-100 tracking-tight">Finance Management</h1>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <h1 className="text-2xl font-black text-slate-900 tracking-tight">Finance Management</h1>
+                <p className="text-xs text-slate-600 font-medium mt-0.5">
                   Monitor costs, expenses, budgets, payments and financial performance.
                 </p>
               </div>
@@ -273,8 +273,8 @@ export default function FinancePage() {
 
           <div className="flex flex-wrap items-center gap-2.5">
             {notificationMsg && (
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium animate-in fade-in">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold animate-in fade-in shadow-sm">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 {notificationMsg}
               </div>
             )}
@@ -282,7 +282,7 @@ export default function FinancePage() {
             <button
               type="button"
               onClick={() => setIsAddExpenseOpen(true)}
-              className="px-4 py-2 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-500 rounded-lg transition-colors shadow-lg shadow-emerald-900/30 flex items-center gap-1.5"
+              className="px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition-colors shadow-sm flex items-center gap-1.5"
             >
               <Plus className="w-4 h-4" />
               + Add Expense
@@ -316,14 +316,14 @@ export default function FinancePage() {
         <FinanceAlerts alerts={alerts} onViewAlert={handleAlertAction} />
 
         {/* Module Navigation Tabs */}
-        <div className="flex flex-wrap items-center gap-2 border-b border-slate-700/60 pb-2">
+        <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
           <button
             type="button"
             onClick={() => setActiveTab("expenses_invoices")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "expenses_invoices"
-                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-emerald-600 text-white shadow-emerald-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <Receipt className="w-4 h-4" />
@@ -333,10 +333,10 @@ export default function FinancePage() {
           <button
             type="button"
             onClick={() => setActiveTab("product_costing")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "product_costing"
-                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-emerald-600 text-white shadow-emerald-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <Factory className="w-4 h-4" />
@@ -346,10 +346,10 @@ export default function FinancePage() {
           <button
             type="button"
             onClick={() => setActiveTab("cost_budgets")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "cost_budgets"
-                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-emerald-600 text-white shadow-emerald-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <Layers className="w-4 h-4" />
@@ -359,10 +359,10 @@ export default function FinancePage() {
           <button
             type="button"
             onClick={() => setActiveTab("procurement_vendors")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "procurement_vendors"
-                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-emerald-600 text-white shadow-emerald-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <ShoppingBag className="w-4 h-4" />
@@ -372,10 +372,10 @@ export default function FinancePage() {
           <button
             type="button"
             onClick={() => setActiveTab("cashflow_trends")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "cashflow_trends"
-                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-emerald-600 text-white shadow-emerald-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <Wallet className="w-4 h-4" />

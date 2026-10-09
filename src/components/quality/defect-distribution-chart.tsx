@@ -38,16 +38,16 @@ export function DefectDistributionChart({ defects }: DefectDistributionChartProp
   });
 
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 sm:p-6 backdrop-blur-sm shadow-md flex flex-col justify-between">
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm flex flex-col justify-between">
       {/* Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-2">
+      <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-2">
         <div className="flex items-center gap-2">
-          <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+          <div className="p-1.5 rounded-lg bg-amber-50 text-amber-700 border border-amber-200">
             <PieIcon className="w-4 h-4" />
           </div>
-          <h3 className="text-base font-bold text-white tracking-tight">Defect Distribution</h3>
+          <h3 className="text-base font-bold text-slate-900 tracking-tight">Defect Distribution</h3>
         </div>
-        <span className="text-xs font-mono text-slate-400 bg-slate-950 px-2.5 py-1 rounded-md border border-slate-800">
+        <span className="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
           {totalDefects.toLocaleString()} Defective Units
         </span>
       </div>
@@ -59,10 +59,12 @@ export function DefectDistributionChart({ defects }: DefectDistributionChartProp
             <PieChart>
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#0f172a",
-                  borderColor: "#334155",
+                  backgroundColor: "#ffffff",
+                  borderColor: "#cbd5e1",
                   borderRadius: "10px",
                   fontSize: "12px",
+                  color: "#0f172a",
+                  boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
                 }}
                 formatter={(val: any, name: any, item: any) => [
                   `${val.toLocaleString()} units (${item.payload.percentage}%)`,
@@ -79,15 +81,15 @@ export function DefectDistributionChart({ defects }: DefectDistributionChartProp
                 dataKey="count"
               >
                 {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} stroke="#0f172a" strokeWidth={2} />
+                  <Cell key={`cell-${index}`} fill={entry.color} stroke="#ffffff" strokeWidth={2} />
                 ))}
               </Pie>
             </PieChart>
           </ResponsiveContainer>
 
           <div className="absolute flex flex-col items-center pointer-events-none">
-            <span className="text-xl font-bold text-white">{totalDefects}</span>
-            <span className="text-[10px] text-slate-400 uppercase tracking-wider">Total</span>
+            <span className="text-xl font-extrabold text-slate-900">{totalDefects}</span>
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Total</span>
           </div>
         </div>
 
@@ -96,23 +98,27 @@ export function DefectDistributionChart({ defects }: DefectDistributionChartProp
           {data.map((item) => (
             <div
               key={item.name}
-              className="p-2 rounded-lg bg-slate-950/60 border border-slate-800/80 flex items-center justify-between text-xs"
+              className="p-2 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between text-xs"
             >
               <div className="flex items-center gap-2">
                 <span
-                  className="w-3 h-3 rounded-full shrink-0"
+                  className="w-3 h-3 rounded-full shrink-0 shadow-xs"
                   style={{ backgroundColor: item.color }}
                 />
-                <span className="text-slate-300 font-medium truncate max-w-[120px]">
+                <span className="text-slate-800 font-bold truncate max-w-[120px]">
                   {item.name}
                 </span>
               </div>
 
               <div className="flex items-center gap-2 font-mono">
-                <span className="text-slate-400">{item.count}</span>
+                <span className="text-slate-600 font-medium">{item.count}</span>
                 <span
-                  className="px-1.5 py-0.5 rounded text-[11px] font-bold"
-                  style={{ color: item.color, backgroundColor: `${item.color}15` }}
+                  className="px-1.5 py-0.5 rounded text-[11px] font-bold border"
+                  style={{
+                    color: item.color,
+                    backgroundColor: `${item.color}15`,
+                    borderColor: `${item.color}40`,
+                  }}
                 >
                   {item.percentage}%
                 </span>
@@ -123,12 +129,12 @@ export function DefectDistributionChart({ defects }: DefectDistributionChartProp
       </div>
 
       {/* Footer */}
-      <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+      <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600 font-medium">
         <span className="flex items-center gap-1">
-          <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-          <span>Top mode: <strong>Burnt Product (36.6%)</strong></span>
+          <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+          <span>Top mode: <strong className="text-slate-900">Burnt Product (36.6%)</strong></span>
         </span>
-        <span className="text-slate-400">Pareto Priority: High</span>
+        <span className="text-slate-600 font-semibold">Pareto Priority: High</span>
       </div>
     </div>
   );

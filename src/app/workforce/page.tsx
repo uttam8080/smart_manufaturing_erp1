@@ -283,15 +283,15 @@ export default function WorkforcePage() {
     <ErpLayout>
       <div className="space-y-6">
         {/* Page Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-700/60">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              <div className="p-2.5 rounded-xl bg-cyan-50 text-cyan-600 border border-cyan-200 shadow-sm">
                 <Users className="w-6 h-6" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-slate-100 tracking-tight">Workforce Management</h1>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <h1 className="text-2xl font-black text-slate-900 tracking-tight">Workforce Management</h1>
+                <p className="text-xs text-slate-600 font-medium mt-0.5">
                   Manage employees, shifts, attendance, workforce allocation and productivity.
                 </p>
               </div>
@@ -300,23 +300,23 @@ export default function WorkforcePage() {
 
           <div className="flex flex-wrap items-center gap-2.5">
             {notificationMsg && (
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium animate-in fade-in">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-bold animate-in fade-in shadow-sm">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 {notificationMsg}
               </div>
             )}
 
             <button
               onClick={() => setIsMarkAttendanceOpen(true)}
-              className="px-3.5 py-2 text-xs font-semibold text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 rounded-lg transition-colors flex items-center gap-1.5 shadow-sm"
+              className="px-3.5 py-2 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-xl transition-colors flex items-center gap-1.5 shadow-sm"
             >
-              <CalendarCheck className="w-4 h-4" />
+              <CalendarCheck className="w-4 h-4 text-emerald-600" />
               Mark Attendance
             </button>
 
             <button
               onClick={() => setIsAddEmployeeOpen(true)}
-              className="px-4 py-2 text-xs font-semibold text-white bg-cyan-600 hover:bg-cyan-500 rounded-lg transition-colors shadow-lg shadow-cyan-900/30 flex items-center gap-1.5"
+              className="px-4 py-2 text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-700 rounded-xl transition-colors shadow-sm flex items-center gap-1.5"
             >
               <UserPlus className="w-4 h-4" />
               + Add Employee
@@ -344,13 +344,13 @@ export default function WorkforcePage() {
         <WorkforceAlerts alerts={alerts} onViewAlert={handleAlertAction} />
 
         {/* Module Navigation Tabs */}
-        <div className="flex flex-wrap items-center gap-2 border-b border-slate-700/60 pb-2">
+        <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 pb-2">
           <button
             onClick={() => setActiveTab("directory")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "directory"
-                ? "bg-cyan-600 text-white shadow-lg shadow-cyan-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-cyan-600 text-white shadow-cyan-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <Users className="w-4 h-4" />
@@ -359,10 +359,10 @@ export default function WorkforcePage() {
 
           <button
             onClick={() => setActiveTab("attendance")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "attendance"
-                ? "bg-cyan-600 text-white shadow-lg shadow-cyan-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-cyan-600 text-white shadow-cyan-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <CalendarCheck className="w-4 h-4" />
@@ -371,10 +371,10 @@ export default function WorkforcePage() {
 
           <button
             onClick={() => setActiveTab("shifts_allocation")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "shifts_allocation"
-                ? "bg-cyan-600 text-white shadow-lg shadow-cyan-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-cyan-600 text-white shadow-cyan-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <Clock className="w-4 h-4" />
@@ -383,10 +383,10 @@ export default function WorkforcePage() {
 
           <button
             onClick={() => setActiveTab("overtime_leave")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "overtime_leave"
-                ? "bg-cyan-600 text-white shadow-lg shadow-cyan-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-cyan-600 text-white shadow-cyan-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <Briefcase className="w-4 h-4" />
@@ -395,10 +395,10 @@ export default function WorkforcePage() {
 
           <button
             onClick={() => setActiveTab("analytics")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
               activeTab === "analytics"
-                ? "bg-cyan-600 text-white shadow-lg shadow-cyan-900/30"
-                : "bg-slate-800/80 text-slate-400 hover:text-slate-200 hover:bg-slate-750 border border-slate-700/50"
+                ? "bg-cyan-600 text-white shadow-cyan-200"
+                : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200"
             }`}
           >
             <BarChart3 className="w-4 h-4" />

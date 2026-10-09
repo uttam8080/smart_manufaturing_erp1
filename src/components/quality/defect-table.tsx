@@ -26,29 +26,29 @@ export function DefectSeverityBadge({ severity }: { severity: DefectSeverity }) 
   switch (severity) {
     case "Critical":
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-red-500/20 text-red-400 border border-red-500/40">
-          <AlertOctagon className="w-3 h-3" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-red-100 text-red-800 border border-red-300">
+          <AlertOctagon className="w-3 h-3 text-red-600" />
           Critical
         </span>
       );
     case "High":
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">
-          <AlertTriangle className="w-3 h-3" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-rose-100 text-rose-800 border border-rose-300">
+          <AlertTriangle className="w-3 h-3 text-rose-600" />
           High
         </span>
       );
     case "Medium":
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30">
-          <AlertTriangle className="w-3 h-3" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+          <AlertTriangle className="w-3 h-3 text-amber-600" />
           Medium
         </span>
       );
     case "Low":
     default:
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-cyan-100 text-cyan-800 border border-cyan-300">
           Low
         </span>
       );
@@ -59,30 +59,30 @@ export function DefectStatusBadge({ status }: { status: DefectStatus }) {
   switch (status) {
     case "Open":
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/15 text-rose-300 border border-rose-500/30">
-          <Clock className="w-3 h-3" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-50 text-rose-800 border border-rose-300">
+          <Clock className="w-3 h-3 text-rose-600" />
           Open
         </span>
       );
     case "Investigating":
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">
-          <Search className="w-3 h-3" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-300">
+          <Search className="w-3 h-3 text-amber-600" />
           Investigating
         </span>
       );
     case "Resolved":
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-300 border border-blue-500/30">
-          <Wrench className="w-3 h-3" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-800 border border-blue-300">
+          <Wrench className="w-3 h-3 text-blue-600" />
           Resolved
         </span>
       );
     case "Closed":
     default:
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-          <CheckCircle2 className="w-3 h-3" />
+        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-300">
+          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
           Closed
         </span>
       );
@@ -98,39 +98,39 @@ export function DefectTable({
 }: DefectTableProps) {
   if (defects.length === 0) {
     return (
-      <div className="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 text-center space-y-2">
-        <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
-        <h3 className="text-sm font-semibold text-white">No active defect records found</h3>
-        <p className="text-xs text-slate-400">All non-conformance issues are resolved.</p>
+      <div className="p-8 rounded-2xl bg-white border border-slate-200 text-center space-y-2 shadow-sm">
+        <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
+        <h3 className="text-sm font-bold text-slate-900">No active defect records found</h3>
+        <p className="text-xs text-slate-600 font-medium">All non-conformance issues are resolved.</p>
       </div>
     );
   }
 
   return (
-    <div className="p-5 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-md space-y-4">
+    <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
       {/* Table Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+          <div className="p-2 rounded-lg bg-rose-50 text-rose-700 border border-rose-200">
             <AlertTriangle className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white tracking-tight">Quality Defects</h3>
-            <p className="text-xs text-slate-400">
+            <h3 className="text-lg font-bold text-slate-900 tracking-tight">Quality Defects</h3>
+            <p className="text-xs text-slate-600 font-medium">
               Non-conformance root cause records, quarantine actions, and CAPA resolution tracking
             </p>
           </div>
         </div>
-        <span className="text-xs font-mono text-rose-400 bg-rose-950/60 px-3 py-1 rounded-lg border border-rose-800/40">
+        <span className="text-xs font-mono font-bold text-rose-800 bg-rose-50 px-3 py-1 rounded-lg border border-rose-200">
           {defects.length} Issues Logged
         </span>
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden lg:block overflow-x-auto rounded-xl border border-slate-800">
+      <div className="hidden lg:block overflow-x-auto rounded-xl border border-slate-200">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
-            <tr className="bg-slate-950/90 border-b border-slate-800 text-slate-400 uppercase tracking-wider font-semibold">
+            <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 uppercase tracking-wider font-bold text-[10px]">
               <th className="py-3.5 px-4">Defect ID</th>
               <th className="py-3.5 px-4">Inspection</th>
               <th className="py-3.5 px-4">Product</th>
@@ -143,39 +143,40 @@ export function DefectTable({
               <th className="py-3.5 px-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-slate-300">
+          <tbody className="divide-y divide-slate-100 text-slate-800 bg-white">
             {defects.map((d) => (
-              <tr key={d.id} className="hover:bg-slate-800/40 transition-colors">
-                <td className="py-3.5 px-4 font-mono font-bold text-rose-400 whitespace-nowrap">
+              <tr key={d.id} className="hover:bg-slate-50 transition-colors">
+                <td className="py-3.5 px-4 font-mono font-bold text-rose-700 whitespace-nowrap">
                   {d.qualityDefectId}
                 </td>
-                <td className="py-3.5 px-4 font-mono text-cyan-400 whitespace-nowrap">
+                <td className="py-3.5 px-4 font-mono font-bold text-cyan-700 whitespace-nowrap">
                   {d.inspectionNumber}
                 </td>
-                <td className="py-3.5 px-4 font-semibold text-white whitespace-nowrap">
+                <td className="py-3.5 px-4 font-bold text-slate-900 whitespace-nowrap">
                   {d.product}
                 </td>
-                <td className="py-3.5 px-4 font-mono text-slate-400 whitespace-nowrap">
+                <td className="py-3.5 px-4 font-mono text-slate-700 font-medium whitespace-nowrap">
                   {d.batchNumber}
                 </td>
                 <td className="py-3.5 px-4 whitespace-nowrap">
                   <span
-                    className="px-2 py-0.5 rounded font-medium text-[11px]"
+                    className="px-2 py-0.5 rounded font-bold text-[11px] border"
                     style={{
                       color: DEFECT_COLORS[d.defectType],
                       backgroundColor: `${DEFECT_COLORS[d.defectType]}15`,
+                      borderColor: `${DEFECT_COLORS[d.defectType]}40`,
                     }}
                   >
                     {d.defectType}
                   </span>
                 </td>
-                <td className="py-3.5 px-4 text-right font-mono font-bold text-slate-200">
+                <td className="py-3.5 px-4 text-right font-mono font-extrabold text-slate-900">
                   {d.defectQuantity.toLocaleString()}
                 </td>
                 <td className="py-3.5 px-4 text-center whitespace-nowrap">
                   <DefectSeverityBadge severity={d.severity} />
                 </td>
-                <td className="py-3.5 px-4 max-w-xs text-slate-300 truncate" title={d.rootCause}>
+                <td className="py-3.5 px-4 max-w-xs text-slate-700 font-medium truncate" title={d.rootCause}>
                   {d.rootCause}
                 </td>
                 <td className="py-3.5 px-4 text-center whitespace-nowrap">
@@ -187,15 +188,15 @@ export function DefectTable({
                       type="button"
                       onClick={() => onUpdateIssueModal(d)}
                       title="Update Root Cause & Corrective Action"
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors"
+                      className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-300 transition-colors cursor-pointer"
                     >
-                      <FileEdit className="w-3.5 h-3.5 text-cyan-400" />
+                      <FileEdit className="w-3.5 h-3.5 text-cyan-600" />
                     </button>
                     {d.status === "Open" && (
                       <button
                         type="button"
                         onClick={() => onInvestigateDefect(d)}
-                        className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 transition-colors"
+                        className="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 transition-colors cursor-pointer"
                       >
                         Investigate
                       </button>
@@ -204,7 +205,7 @@ export function DefectTable({
                       <button
                         type="button"
                         onClick={() => onResolveDefect(d)}
-                        className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-colors"
+                        className="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-100 hover:bg-emerald-200 text-emerald-900 border border-emerald-300 transition-colors cursor-pointer"
                       >
                         Resolve
                       </button>
@@ -212,10 +213,10 @@ export function DefectTable({
                     <button
                       type="button"
                       onClick={() => onViewDefect(d)}
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors"
+                      className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-300 transition-colors cursor-pointer"
                       title="View Full Defect Audit"
                     >
-                      <Eye className="w-3.5 h-3.5" />
+                      <Eye className="w-3.5 h-3.5 text-slate-600" />
                     </button>
                   </div>
                 </td>
@@ -230,15 +231,15 @@ export function DefectTable({
         {defects.map((d) => (
           <div
             key={d.id}
-            className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-3"
+            className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm space-y-3"
           >
             <div className="flex items-start justify-between">
               <div>
-                <span className="font-mono text-xs font-bold text-rose-400 block">
+                <span className="font-mono text-xs font-bold text-rose-700 block">
                   {d.qualityDefectId}
                 </span>
-                <span className="font-semibold text-white text-sm">{d.product}</span>
-                <span className="text-xs text-slate-500 font-mono block">
+                <span className="font-bold text-slate-900 text-sm">{d.product}</span>
+                <span className="text-xs text-slate-600 font-mono block">
                   {d.defectType} • {d.defectQuantity} units
                 </span>
               </div>
@@ -248,18 +249,18 @@ export function DefectTable({
               </div>
             </div>
 
-            <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800/80 text-xs">
-              <span className="text-slate-400 font-medium block mb-0.5">Root Cause:</span>
-              <p className="text-slate-300 line-clamp-2">{d.rootCause}</p>
+            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs">
+              <span className="text-slate-700 font-bold block mb-0.5">Root Cause:</span>
+              <p className="text-slate-800 font-medium line-clamp-2">{d.rootCause}</p>
             </div>
 
             <div className="flex items-center justify-between pt-1 gap-2">
               <button
                 type="button"
                 onClick={() => onUpdateIssueModal(d)}
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-cyan-400 border border-slate-700"
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-900 border border-slate-300"
               >
-                <FileEdit className="w-3.5 h-3.5" />
+                <FileEdit className="w-3.5 h-3.5 text-cyan-600" />
                 <span>Update CAPA</span>
               </button>
               <div className="flex items-center gap-1.5">
@@ -267,7 +268,7 @@ export function DefectTable({
                   <button
                     type="button"
                     onClick={() => onInvestigateDefect(d)}
-                    className="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30"
+                    className="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300"
                   >
                     Investigate
                   </button>
@@ -275,7 +276,7 @@ export function DefectTable({
                 <button
                   type="button"
                   onClick={() => onResolveDefect(d)}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300"
                 >
                   Resolve
                 </button>

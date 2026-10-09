@@ -247,12 +247,18 @@ export default function OrdersPage() {
         )}
 
         {/* 1. Page Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-800/80">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100/80 text-emerald-800 border border-emerald-200">
+                <ShoppingBag className="w-3.5 h-3.5 text-emerald-700" />
+                Sales & Distribution
+              </span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
               Customer Orders Intake & Management
             </h1>
-            <p className="text-sm text-slate-400 mt-0.5">
+            <p className="text-sm text-slate-600 mt-0.5 font-medium">
               Role-authorized customer order registration, status progression, financial audits, and deletion.
             </p>
           </div>
@@ -260,7 +266,7 @@ export default function OrdersPage() {
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-xs font-bold text-white shadow-lg shadow-emerald-500/20 transition active:scale-95"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-xs font-bold text-white shadow-md shadow-emerald-600/20 transition active:scale-95"
             >
               <Plus className="w-4 h-4" />
               <span>Register New Order</span>
@@ -270,63 +276,67 @@ export default function OrdersPage() {
 
         {/* 3 KPI Summary Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-sm flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-slate-300 transition flex items-center justify-between">
             <div>
-              <p className="text-xs font-medium text-slate-400">Total Customer Orders</p>
-              <p className="text-2xl font-bold text-white mt-1">{orders.length}</p>
-              <span className="text-[11px] text-cyan-400 font-medium">All Registered Orders</span>
+              <p className="text-xs font-semibold text-slate-600">Total Customer Orders</p>
+              <p className="text-2xl font-extrabold text-slate-900 mt-1 font-mono">{orders.length}</p>
+              <span className="inline-block mt-1 text-[11px] text-cyan-700 bg-cyan-50 border border-cyan-200 px-2 py-0.5 rounded-full font-semibold">
+                All Registered Orders
+              </span>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+            <div className="w-10 h-10 rounded-xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-700 shrink-0">
               <ClipboardList className="w-5 h-5" />
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-sm flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-slate-300 transition flex items-center justify-between">
             <div>
-              <p className="text-xs font-medium text-slate-400">Total Packets Ordered</p>
-              <p className="text-2xl font-bold text-emerald-400 mt-1">
-                {totalOrderedUnits.toLocaleString()} <span className="text-xs text-slate-400 font-normal">Packets</span>
+              <p className="text-xs font-semibold text-slate-600">Total Packets Ordered</p>
+              <p className="text-2xl font-extrabold text-slate-900 mt-1 font-mono">
+                {totalOrderedUnits.toLocaleString()} <span className="text-xs text-slate-600 font-semibold">Packets</span>
               </p>
-              <span className="text-[11px] text-emerald-400 font-medium">Total Unit Demand</span>
+              <span className="inline-block mt-1 text-[11px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-semibold">
+                Total Unit Demand
+              </span>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 shrink-0">
               <ShoppingBag className="w-5 h-5" />
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-sm flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-slate-300 transition flex items-center justify-between">
             <div>
-              <p className="text-xs font-medium text-slate-400">Cumulative Order Value</p>
-              <p className="text-2xl font-bold text-white mt-1">
+              <p className="text-xs font-semibold text-slate-600">Cumulative Order Value</p>
+              <p className="text-2xl font-extrabold text-slate-900 mt-1 font-mono">
                 ₹{totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2 })}
               </p>
-              <span className="text-[11px] text-purple-400 font-medium">
+              <span className="inline-block mt-1 text-[11px] text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-full font-semibold">
                 Total Sales Pipeline
               </span>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+            <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-700 shrink-0">
               <TrendingUp className="w-5 h-5" />
             </div>
           </div>
         </div>
 
         {/* 4. Orders Table */}
-        <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-md">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-base font-bold text-white flex items-center gap-2">
-                <PackageCheck className="w-4 h-4 text-emerald-400" />
+              <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <PackageCheck className="w-4 h-4 text-emerald-600" />
                 Live Customer Orders Records
               </h2>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 font-medium">
                 Track and manage client purchase orders across all production lifecycles
               </p>
             </div>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-950/80 text-slate-400 font-semibold border-b border-slate-800">
+            <table className="w-full text-left text-xs text-slate-800">
+              <thead className="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
                 <tr>
                   <th className="py-3 px-4">Order #</th>
                   <th className="py-3 px-4">Customer</th>
@@ -340,35 +350,35 @@ export default function OrdersPage() {
                   )}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 font-sans">
+              <tbody className="divide-y divide-slate-200 font-sans">
                 {orders.map((ord) => (
-                  <tr key={ord.id} className="hover:bg-slate-800/30 transition">
-                    <td className="py-3 px-4 font-mono font-bold text-cyan-300">
+                  <tr key={ord.id} className="hover:bg-slate-50/80 transition">
+                    <td className="py-3 px-4 font-mono font-bold text-cyan-800">
                       {ord.orderNumber}
                     </td>
-                    <td className="py-3 px-4 font-medium text-white">
+                    <td className="py-3 px-4 font-medium text-slate-900">
                       <div className="flex items-center gap-1.5">
-                        <Building2 className="w-3.5 h-3.5 text-slate-400" />
-                        <span>{ord.customerName}</span>
+                        <Building2 className="w-3.5 h-3.5 text-slate-500" />
+                        <span className="font-semibold text-slate-900">{ord.customerName}</span>
                       </div>
                     </td>
                     <td className="py-3 px-4">
                       {ord.items.map((it) => (
                         <div key={it.id} className="flex items-center gap-1.5 font-medium">
-                          <span className="text-slate-200">{it.productName}</span>
-                          <span className="font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[11px]">
+                          <span className="text-slate-800 font-medium">{it.productName}</span>
+                          <span className="font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded text-[11px] font-semibold">
                             {it.quantity.toLocaleString()} {it.unit || "Packs"}
                           </span>
                         </div>
                       ))}
                     </td>
-                    <td className="py-3 px-4 text-slate-400 font-mono">
+                    <td className="py-3 px-4 text-slate-700 font-mono font-medium">
                       {new Date(ord.orderDate || ord.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="py-3 px-4 text-slate-400 font-mono">
+                    <td className="py-3 px-4 text-slate-700 font-mono font-medium">
                       {ord.expectedDeliveryDate ? new Date(ord.expectedDeliveryDate).toLocaleDateString() : "TBD"}
                     </td>
-                    <td className="py-3 px-4 font-mono font-bold text-emerald-400">
+                    <td className="py-3 px-4 font-mono font-bold text-slate-900">
                       ₹{ord.totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                     </td>
                     <td className="py-3 px-4">
@@ -377,7 +387,7 @@ export default function OrdersPage() {
                           <select
                             value={ord.status}
                             onChange={(e) => handleStatusChange(ord.id, e.target.value)}
-                            className="appearance-none bg-slate-950 border border-slate-700 text-xs font-semibold text-slate-200 py-1 pl-2.5 pr-6 rounded-lg focus:outline-none focus:border-cyan-500 cursor-pointer"
+                            className="appearance-none bg-white border border-slate-300 text-xs font-semibold text-slate-900 py-1 pl-2.5 pr-6 rounded-lg focus:outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-600 cursor-pointer shadow-xs"
                           >
                             <option value="Pending">Pending</option>
                             <option value="Confirmed">Confirmed</option>
@@ -386,11 +396,11 @@ export default function OrdersPage() {
                             <option value="Dispatched">Dispatched</option>
                             <option value="Cancelled">Cancelled</option>
                           </select>
-                          <ChevronDown className="w-3 h-3 text-slate-400 absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                          <ChevronDown className="w-3 h-3 text-slate-500 absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                         </div>
                       ) : (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                          <CheckCircle2 className="w-3 h-3" />
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                           {ord.status}
                         </span>
                       )}
@@ -399,10 +409,10 @@ export default function OrdersPage() {
                       <td className="py-3 px-4 text-right">
                         <button
                           onClick={() => setDeletingOrder(ord)}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/25 border border-rose-500/30 text-rose-300 text-xs font-semibold transition active:scale-95"
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 text-xs font-semibold transition active:scale-95 shadow-xs"
                           title={`Delete Order ${ord.orderNumber} from database`}
                         >
-                          <Trash2 className="w-3.5 h-3.5 text-rose-400" />
+                          <Trash2 className="w-3.5 h-3.5 text-rose-600" />
                           <span>Delete</span>
                         </button>
                       </td>
@@ -416,20 +426,20 @@ export default function OrdersPage() {
 
         {/* Modal for Registering Customer Order */}
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in">
-            <div className="w-full max-w-lg rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-6 space-y-5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+            <div className="w-full max-w-lg rounded-2xl bg-white border border-slate-200 shadow-2xl p-6 space-y-5">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
                     <ShoppingBag className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-white">Register New Customer Order</h3>
+                    <h3 className="text-base font-bold text-slate-900">Register New Customer Order</h3>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="text-slate-400 hover:text-white text-lg font-bold"
+                  className="text-slate-400 hover:text-slate-700 text-lg font-bold"
                 >
                   ✕
                 </button>
@@ -438,7 +448,7 @@ export default function OrdersPage() {
               <form onSubmit={handlePlaceOrder} className="space-y-4">
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <label className="text-xs font-semibold text-slate-300">Customer</label>
+                    <label className="text-xs font-semibold text-slate-700">Customer</label>
                     {customerMode === "manual" && (
                       <button
                         type="button"
@@ -446,7 +456,7 @@ export default function OrdersPage() {
                           setCustomerMode("select");
                           setManualCustomerName("");
                         }}
-                        className="text-[11px] text-cyan-400 hover:text-cyan-300"
+                        className="text-[11px] font-semibold text-cyan-700 hover:text-cyan-800"
                       >
                         ← Choose from list
                       </button>
@@ -463,7 +473,7 @@ export default function OrdersPage() {
                           setSelectedCustomerId(e.target.value);
                         }
                       }}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-cyan-500"
+                      className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-600"
                     >
                       {customers.map((c) => (
                         <option key={c.id} value={c.id}>
@@ -479,14 +489,14 @@ export default function OrdersPage() {
                       placeholder="Type Customer / Company Name (e.g. Reliance Fresh, Local Mart)"
                       value={manualCustomerName}
                       onChange={(e) => setManualCustomerName(e.target.value)}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-cyan-500 placeholder:text-slate-500"
+                      className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-600 placeholder:text-slate-400"
                       autoFocus
                     />
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Select Biscuit Product</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">Select Biscuit Product</label>
                   <select
                     value={selectedProductId}
                     onChange={(e) => {
@@ -494,7 +504,7 @@ export default function OrdersPage() {
                       if (e.target.value === "2") setUnitPrice(30.0);
                       else setUnitPrice(25.0);
                     }}
-                    className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-cyan-500"
+                    className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-600"
                   >
                     <option value="1">Biscuit - Coconut (FG-BIS-001) - ₹25.00/pack</option>
                     <option value="2">Biscuit - Chocolate (FG-BIS-002) - ₹30.00/pack</option>
@@ -503,7 +513,7 @@ export default function OrdersPage() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Ordered Quantity (Packets)</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Ordered Quantity (Packets)</label>
                     <input
                       type="number"
                       min="1"
@@ -511,11 +521,11 @@ export default function OrdersPage() {
                       required
                       value={orderQuantity}
                       onChange={(e) => setOrderQuantity(parseInt(e.target.value) || 0)}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white font-mono focus:outline-none focus:border-cyan-500"
+                      className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-600"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">Unit Price (₹ / pack)</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Unit Price (₹ / pack)</label>
                     <input
                       type="number"
                       step="any"
@@ -523,14 +533,14 @@ export default function OrdersPage() {
                       required
                       value={unitPrice}
                       onChange={(e) => setUnitPrice(parseFloat(e.target.value) || 0)}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white font-mono focus:outline-none focus:border-cyan-500"
+                      className="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-600"
                     />
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-                  <p className="text-[11px] text-slate-400 mb-1">Total Calculated Order Value:</p>
-                  <p className="text-xl font-bold font-mono text-emerald-400">
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <p className="text-[11px] text-slate-600 font-semibold mb-1">Total Calculated Order Value:</p>
+                  <p className="text-xl font-bold font-mono text-slate-900">
                     ₹{(orderQuantity * unitPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </p>
                 </div>
@@ -539,14 +549,14 @@ export default function OrdersPage() {
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300"
+                    className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-700 border border-slate-200 transition"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-xs font-bold text-white shadow-lg shadow-emerald-500/20 disabled:opacity-50 flex items-center gap-1.5"
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-xs font-bold text-white shadow-md shadow-emerald-600/20 disabled:opacity-50 flex items-center gap-1.5 transition"
                   >
                     {isSubmitting ? "Saving..." : "Confirm & Save Order"}
                   </button>
@@ -558,28 +568,28 @@ export default function OrdersPage() {
 
         {/* Delete Confirmation Modal */}
         {deletingOrder && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in">
-            <div className="w-full max-w-md rounded-2xl bg-slate-900 border border-rose-500/40 shadow-2xl p-6 space-y-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+            <div className="w-full max-w-md rounded-2xl bg-white border border-rose-200 shadow-2xl p-6 space-y-4">
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600 shrink-0">
                   <Trash2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white">Delete Order {deletingOrder.orderNumber}?</h3>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <h3 className="text-base font-bold text-slate-900">Delete Order {deletingOrder.orderNumber}?</h3>
+                  <p className="text-xs text-slate-600 mt-1">
                     Are you sure you want to delete this order? This action cannot be undone.
                   </p>
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs space-y-1">
-                <div className="flex justify-between text-slate-300">
-                  <span>Customer:</span>
-                  <span className="font-semibold text-white">{deletingOrder.customerName}</span>
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
+                <div className="flex justify-between text-slate-700">
+                  <span className="font-medium">Customer:</span>
+                  <span className="font-bold text-slate-900">{deletingOrder.customerName}</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
-                  <span>Order Total:</span>
-                  <span className="font-mono font-bold text-rose-400">
+                <div className="flex justify-between text-slate-700">
+                  <span className="font-medium">Order Total:</span>
+                  <span className="font-mono font-bold text-rose-700">
                     ₹{deletingOrder.totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                   </span>
                 </div>
@@ -590,7 +600,7 @@ export default function OrdersPage() {
                   type="button"
                   onClick={() => setDeletingOrder(null)}
                   disabled={isDeleting}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300"
+                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-700 border border-slate-200 transition"
                 >
                   Cancel
                 </button>
@@ -598,7 +608,7 @@ export default function OrdersPage() {
                   type="button"
                   onClick={handleConfirmDelete}
                   disabled={isDeleting}
-                  className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-xs font-bold text-white shadow-lg shadow-rose-600/30 flex items-center gap-1.5 disabled:opacity-50"
+                  className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-xs font-bold text-white shadow-md shadow-rose-600/20 flex items-center gap-1.5 disabled:opacity-50 transition"
                 >
                   {isDeleting ? "Deleting..." : "Confirm & Delete Order"}
                 </button>
@@ -609,28 +619,28 @@ export default function OrdersPage() {
 
         {/* Full RBAC Authorization Matrix Modal */}
         {showMatrixModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-            <div className="w-full max-w-2xl rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-6 space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+            <div className="w-full max-w-2xl rounded-2xl bg-white border border-slate-200 shadow-2xl p-6 space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <div className="flex items-center gap-2">
-                  <ShieldAlert className="w-5 h-5 text-cyan-400" />
-                  <h3 className="text-base font-bold text-white">Full Orders Authorization Matrix (RBAC)</h3>
+                  <ShieldAlert className="w-5 h-5 text-cyan-600" />
+                  <h3 className="text-base font-bold text-slate-900">Full Orders Authorization Matrix (RBAC)</h3>
                 </div>
                 <button
                   onClick={() => setShowMatrixModal(false)}
-                  className="text-slate-400 hover:text-white text-lg font-bold"
+                  className="text-slate-400 hover:text-slate-700 text-lg font-bold"
                 >
                   ✕
                 </button>
               </div>
 
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-600">
                 This table defines what each of the 9 corporate ERP roles is authorized to perform in the Order Management module:
               </p>
 
-              <div className="overflow-x-auto border border-slate-800 rounded-xl">
-                <table className="w-full text-left text-xs text-slate-300">
-                  <thead className="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+              <div className="overflow-x-auto border border-slate-200 rounded-xl">
+                <table className="w-full text-left text-xs text-slate-800">
+                  <thead className="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
                     <tr>
                       <th className="py-2.5 px-3">Role</th>
                       <th className="py-2.5 px-3 text-center">See Orders</th>
@@ -640,78 +650,78 @@ export default function OrdersPage() {
                       <th className="py-2.5 px-3 text-center">Financials</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/80 font-sans">
-                    <tr className="bg-slate-900/40">
-                      <td className="py-2 px-3 font-bold text-rose-400">🛡️ Admin</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-rose-400 font-bold">✅ Full Purge</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Full</td>
+                  <tbody className="divide-y divide-slate-200 font-sans">
+                    <tr className="bg-slate-50/50">
+                      <td className="py-2 px-3 font-bold text-rose-700">🛡️ Admin</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-rose-700 font-bold">✅ Full Purge</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Full</td>
                     </tr>
                     <tr>
-                      <td className="py-2 px-3 font-bold text-amber-400">🏢 Factory Manager</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-amber-400 font-bold">✅ Cancel/Void</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Full</td>
+                      <td className="py-2 px-3 font-bold text-amber-700">🏢 Factory Manager</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-amber-700 font-bold">✅ Cancel/Void</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Full</td>
                     </tr>
-                    <tr className="bg-slate-900/40">
-                      <td className="py-2 px-3 font-bold text-blue-400">🏭 Production Manager</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ Masked</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2 px-3 font-bold text-teal-400">💲 Finance Manager</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Full Audit</td>
-                    </tr>
-                    <tr className="bg-slate-900/40">
-                      <td className="py-2 px-3 font-bold text-emerald-400">📦 Inventory Manager</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ Masked</td>
+                    <tr className="bg-slate-50/50">
+                      <td className="py-2 px-3 font-bold text-blue-700">🏭 Production Manager</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ Masked</td>
                     </tr>
                     <tr>
-                      <td className="py-2 px-3 font-bold text-cyan-400">🚚 Procurement Manager</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ Masked</td>
+                      <td className="py-2 px-3 font-bold text-teal-700">💲 Finance Manager</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Full Audit</td>
                     </tr>
-                    <tr className="bg-slate-900/40">
-                      <td className="py-2 px-3 font-bold text-purple-400">✅ Quality Manager</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ Masked</td>
+                    <tr className="bg-slate-50/50">
+                      <td className="py-2 px-3 font-bold text-emerald-700">📦 Inventory Manager</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ Masked</td>
                     </tr>
                     <tr>
-                      <td className="py-2 px-3 font-bold text-orange-400">🔧 Maintenance Manager</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ Masked</td>
+                      <td className="py-2 px-3 font-bold text-cyan-700">🚚 Procurement Manager</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ Masked</td>
                     </tr>
-                    <tr className="bg-slate-900/40">
-                      <td className="py-2 px-3 font-bold text-indigo-400">👥 HR Manager</td>
-                      <td className="py-2 px-3 text-center text-emerald-400 font-bold">✅ Yes</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ No</td>
-                      <td className="py-2 px-3 text-center text-slate-500">❌ Masked</td>
+                    <tr className="bg-slate-50/50">
+                      <td className="py-2 px-3 font-bold text-purple-700">✅ Quality Manager</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ Masked</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 px-3 font-bold text-orange-700">🔧 Maintenance Manager</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ Masked</td>
+                    </tr>
+                    <tr className="bg-slate-50/50">
+                      <td className="py-2 px-3 font-bold text-indigo-700">👥 HR Manager</td>
+                      <td className="py-2 px-3 text-center text-emerald-700 font-bold">✅ Yes</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ No</td>
+                      <td className="py-2 px-3 text-center text-slate-400">❌ Masked</td>
                     </tr>
                   </tbody>
                 </table>
@@ -721,7 +731,7 @@ export default function OrdersPage() {
                 <button
                   type="button"
                   onClick={() => setShowMatrixModal(false)}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition"
+                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-700 border border-slate-200 transition"
                 >
                   Close Matrix
                 </button>

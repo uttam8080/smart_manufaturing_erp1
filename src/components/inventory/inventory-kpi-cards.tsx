@@ -36,8 +36,8 @@ export function InventoryKpiCards({ items }: InventoryKpiCardsProps) {
       isGood: true,
       label: "Active stock items",
       icon: Boxes,
-      color: "text-cyan-400",
-      bg: "bg-cyan-500/10 border-cyan-500/20",
+      color: "text-cyan-700",
+      bg: "bg-cyan-50 border-cyan-200",
     },
     {
       id: "stock_value",
@@ -51,8 +51,8 @@ export function InventoryKpiCards({ items }: InventoryKpiCardsProps) {
       isGood: true,
       label: "Valued at unit cost",
       icon: IndianRupee,
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10 border-emerald-500/20",
+      color: "text-emerald-700",
+      bg: "bg-emerald-50 border-emerald-200",
     },
     {
       id: "available_stock",
@@ -63,8 +63,8 @@ export function InventoryKpiCards({ items }: InventoryKpiCardsProps) {
       isGood: true,
       label: "Available in warehouse",
       icon: CheckCircle2,
-      color: "text-blue-400",
-      bg: "bg-blue-500/10 border-blue-500/20",
+      color: "text-blue-700",
+      bg: "bg-blue-50 border-blue-200",
     },
     {
       id: "low_stock",
@@ -75,8 +75,8 @@ export function InventoryKpiCards({ items }: InventoryKpiCardsProps) {
       isGood: lowStockCount === 0,
       label: "Below reorder level",
       icon: AlertTriangle,
-      color: "text-amber-400",
-      bg: "bg-amber-500/10 border-amber-500/20",
+      color: "text-amber-700",
+      bg: "bg-amber-50 border-amber-200",
     },
     {
       id: "critical_stock",
@@ -87,8 +87,8 @@ export function InventoryKpiCards({ items }: InventoryKpiCardsProps) {
       isGood: criticalStockCount === 0,
       label: "< 50% reorder level",
       icon: ShieldAlert,
-      color: "text-rose-400",
-      bg: "bg-rose-500/10 border-rose-500/20",
+      color: "text-rose-700",
+      bg: "bg-rose-50 border-rose-200",
     },
   ];
 
@@ -99,11 +99,11 @@ export function InventoryKpiCards({ items }: InventoryKpiCardsProps) {
         return (
           <div
             key={card.id}
-            className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-md hover:border-slate-700 transition flex flex-col justify-between"
+            className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-slate-300 transition flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-600 truncate">
                   {card.title}
                 </span>
                 <div className={`p-1.5 rounded-lg border ${card.bg} shrink-0`}>
@@ -112,29 +112,29 @@ export function InventoryKpiCards({ items }: InventoryKpiCardsProps) {
               </div>
 
               <div className="flex items-baseline gap-1">
-                <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-white font-mono">
+                <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 font-mono">
                   {card.value}
                 </span>
                 {card.unit && (
-                  <span className="text-xs text-slate-400 font-medium">
+                  <span className="text-xs text-slate-600 font-semibold">
                     {card.unit}
                   </span>
                 )}
               </div>
             </div>
 
-            <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <div className="mt-3 pt-2.5 border-t border-slate-200 flex items-center justify-between text-xs">
               <span
-                className={`inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded text-[10px] font-semibold font-mono ${
+                className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-semibold font-mono ${
                   card.isGood
-                    ? "bg-emerald-950/70 text-emerald-400 border border-emerald-800/60"
-                    : "bg-rose-950/70 text-rose-400 border border-rose-800/60"
+                    ? "bg-emerald-50 text-emerald-800 border border-emerald-200"
+                    : "bg-rose-50 text-rose-800 border border-rose-200"
                 }`}
               >
                 {card.change}
               </span>
 
-              <span className="text-[10px] text-slate-400 truncate text-right">
+              <span className="text-[10px] text-slate-600 font-medium truncate text-right">
                 {card.label}
               </span>
             </div>

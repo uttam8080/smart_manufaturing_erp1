@@ -20,21 +20,21 @@ export function StockCategoryChart({ categories }: StockCategoryChartProps) {
     if (active && payload && payload.length) {
       const item: StockCategorySummary = payload[0].payload;
       return (
-        <div className="p-3 rounded-xl bg-slate-900 border border-slate-700 shadow-xl text-xs space-y-1 font-sans min-w-[160px]">
-          <p className="font-bold text-white border-b border-slate-800 pb-1">{item.category}</p>
-          <div className="flex justify-between items-center text-slate-300">
+        <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-xl text-xs space-y-1 font-sans min-w-[160px]">
+          <p className="font-bold text-slate-900 border-b border-slate-200 pb-1">{item.category}</p>
+          <div className="flex justify-between items-center text-slate-700">
             <span>Total Units:</span>
-            <span className="font-mono font-bold text-cyan-400">{item.totalQuantity.toLocaleString()}</span>
+            <span className="font-mono font-bold text-cyan-800">{item.totalQuantity.toLocaleString()}</span>
           </div>
-          <div className="flex justify-between items-center text-slate-300">
+          <div className="flex justify-between items-center text-slate-700">
             <span>Total Valuation:</span>
-            <span className="font-mono font-bold text-emerald-400">
+            <span className="font-mono font-bold text-emerald-700">
               ₹{item.totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </span>
           </div>
-          <div className="flex justify-between items-center text-slate-400 text-[10px] pt-1 border-t border-slate-800">
+          <div className="flex justify-between items-center text-slate-500 text-[10px] pt-1 border-t border-slate-200">
             <span>Catalog Items:</span>
-            <span className="font-mono">{item.itemCount} SKUs</span>
+            <span className="font-mono font-medium">{item.itemCount} SKUs</span>
           </div>
         </div>
       );
@@ -45,19 +45,19 @@ export function StockCategoryChart({ categories }: StockCategoryChartProps) {
   const grandTotalValue = categories.reduce((acc, c) => acc + c.totalValue, 0);
 
   return (
-    <div className="p-5 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-md flex flex-col justify-between">
+    <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <div>
-          <h2 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <Layers className="w-4 h-4 text-purple-400" />
+          <h2 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
+            <Layers className="w-4 h-4 text-purple-600" />
             Stock by Category
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
             Inventory asset valuation & unit share
           </p>
         </div>
-        <span className="text-xs font-mono text-emerald-400 font-semibold">
+        <span className="text-xs font-mono text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
           ₹{grandTotalValue.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} Total
         </span>
       </div>
@@ -93,28 +93,28 @@ export function StockCategoryChart({ categories }: StockCategoryChartProps) {
             return (
               <div
                 key={cat.category}
-                className="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 space-y-1.5"
+                className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                     <span
                       className="w-2.5 h-2.5 rounded-full"
                       style={{ backgroundColor: cat.color }}
                     />
                     {cat.category}
                   </span>
-                  <span className="font-mono text-xs font-bold text-emerald-400">
+                  <span className="font-mono text-xs font-bold text-slate-900">
                     ₹{cat.totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
 
-                <div className="flex justify-between items-center text-[11px] text-slate-400">
+                <div className="flex justify-between items-center text-[11px] text-slate-600 font-medium">
                   <span>{cat.totalQuantity.toLocaleString()} on-hand units</span>
                   <span className="font-mono">{valueShare}% of total value</span>
                 </div>
 
                 {/* Progress bar */}
-                <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-500"
                     style={{

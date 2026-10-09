@@ -73,21 +73,21 @@ export function NewProductionOrderModal({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in">
-      <div className="w-full max-w-lg rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-6 space-y-5 text-slate-100">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in">
+      <div className="w-full max-w-lg rounded-2xl bg-white border border-slate-200 shadow-2xl p-6 space-y-5 text-slate-900">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-700">
               <Factory className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Create New Production Work Order</h3>
-              <p className="text-xs text-slate-400">Schedule factory batch run on shop floor</p>
+              <h3 className="text-base font-bold text-slate-900">Create New Production Work Order</h3>
+              <p className="text-xs text-slate-500 font-medium">Schedule factory batch run on shop floor</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white text-lg font-bold"
+            className="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition"
           >
             <X className="w-5 h-5" />
           </button>
@@ -95,11 +95,11 @@ export function NewProductionOrderModal({
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           <div>
-            <label className="block font-semibold text-slate-300 mb-1">Select Product SKU</label>
+            <label className="block font-bold text-slate-700 mb-1">Select Product SKU</label>
             <select
               value={productId}
               onChange={(e) => setProductId(parseInt(e.target.value, 10))}
-              className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500"
+              className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
             >
               {defaultProducts.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -111,11 +111,11 @@ export function NewProductionOrderModal({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-semibold text-slate-300 mb-1">Target Machine Line</label>
+              <label className="block font-bold text-slate-700 mb-1">Target Machine Line</label>
               <select
                 value={machineId}
                 onChange={(e) => setMachineId(parseInt(e.target.value, 10))}
-                className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
               >
                 {defaultMachines.map((m) => (
                   <option key={m.id} value={m.id}>
@@ -126,11 +126,11 @@ export function NewProductionOrderModal({
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 mb-1">Production Shift</label>
+              <label className="block font-bold text-slate-700 mb-1">Production Shift</label>
               <select
                 value={shiftId}
                 onChange={(e) => setShiftId(parseInt(e.target.value, 10))}
-                className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
               >
                 {defaultShifts.map((s) => (
                   <option key={s.id} value={s.id}>
@@ -143,7 +143,7 @@ export function NewProductionOrderModal({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block font-semibold text-slate-300 mb-1">Planned Target (Packets)</label>
+              <label className="block font-bold text-slate-700 mb-1">Planned Target (Packets)</label>
               <input
                 type="number"
                 min="1"
@@ -151,12 +151,12 @@ export function NewProductionOrderModal({
                 required
                 value={plannedQuantity}
                 onChange={(e) => setPlannedQuantity(Math.max(1, parseInt(e.target.value, 10) || 1))}
-                className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 font-mono font-bold focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-300 mb-1">Planned Runtime (Hours)</label>
+              <label className="block font-bold text-slate-700 mb-1">Planned Runtime (Hours)</label>
               <input
                 type="number"
                 min="0.5"
@@ -164,23 +164,23 @@ export function NewProductionOrderModal({
                 required
                 value={plannedHours}
                 onChange={(e) => setPlannedHours(parseFloat(e.target.value) || 8)}
-                className="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500"
+                className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 font-mono font-bold focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500"
               />
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300"
+              className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 transition"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-xs font-bold text-white shadow-lg shadow-blue-500/20 disabled:opacity-50 flex items-center gap-1.5"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-xs font-bold text-white shadow-md shadow-blue-500/20 disabled:opacity-50 flex items-center gap-1.5 transition active:scale-95"
             >
               <Plus className="w-4 h-4" />
               <span>{isSubmitting ? "Scheduling..." : "Schedule Work Order"}</span>

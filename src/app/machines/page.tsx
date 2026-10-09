@@ -280,33 +280,37 @@ export default function MachinesPage() {
         )}
 
         {/* Page Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200">
           <div>
-            <div className="flex items-center gap-2.5">
-              <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Machines & Predictive Maintenance
-              </h1>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-50 text-cyan-800 border border-cyan-200">
+                <Wrench className="w-3.5 h-3.5 text-cyan-600" />
+                Plant Equipment & Telemetry
+              </span>
             </div>
-            <p className="text-sm text-slate-400 mt-1">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+              Machines & Predictive Maintenance
+            </h1>
+            <p className="text-sm text-slate-600 mt-0.5 font-medium">
               Live factory machines, sensor streams, predictive maintenance & service logs.
             </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={handleRefresh}
               disabled={isRefreshing || isLoading}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-all shadow-sm disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold transition shadow-xs disabled:opacity-50"
               title="Refresh sensor streams"
             >
-              <RefreshCw className={`w-3.5 h-3.5 text-cyan-400 ${isRefreshing || isLoading ? "animate-spin" : ""}`} />
+              <RefreshCw className={`w-3.5 h-3.5 text-cyan-600 ${isRefreshing || isLoading ? "animate-spin" : ""}`} />
               <span>{isRefreshing || isLoading ? "Syncing..." : "Sync Telemetry"}</span>
             </button>
 
             <button
               onClick={() => handleOpenScheduleModal()}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-xs font-bold transition-all shadow-lg shadow-cyan-500/20 active:scale-95"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold transition-all shadow-md shadow-cyan-600/20 active:scale-95"
             >
               <Plus className="w-4 h-4" />
               <span>Schedule Maintenance</span>

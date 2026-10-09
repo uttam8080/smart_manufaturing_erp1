@@ -69,14 +69,14 @@ export function MachineStatusDropdown({
   const getBadgeStyle = () => {
     switch (currentStatus) {
       case "Warning":
-        return "bg-amber-950/90 text-amber-300 border-amber-800/80 hover:bg-amber-900/90";
+        return "bg-amber-50 text-amber-900 border-amber-300 hover:bg-amber-100";
       case "Maintenance":
-        return "bg-rose-950/90 text-rose-300 border-rose-800/80 hover:bg-rose-900/90";
+        return "bg-rose-50 text-rose-900 border-rose-300 hover:bg-rose-100";
       case "Idle":
-        return "bg-slate-800/90 text-slate-300 border-slate-700 hover:bg-slate-750";
+        return "bg-slate-100 text-slate-800 border-slate-300 hover:bg-slate-200";
       case "Running":
       default:
-        return "bg-emerald-950/90 text-emerald-300 border-emerald-800/80 hover:bg-emerald-900/90";
+        return "bg-emerald-50 text-emerald-900 border-emerald-300 hover:bg-emerald-100";
     }
   };
 
@@ -91,29 +91,29 @@ export function MachineStatusDropdown({
       id: "Running",
       label: "Running",
       desc: "Active production load & sensor telemetry",
-      icon: <Play className="w-3.5 h-3.5 text-emerald-400" />,
-      color: "text-emerald-400",
+      icon: <Play className="w-3.5 h-3.5 text-emerald-600" />,
+      color: "text-emerald-900",
     },
     {
       id: "Idle",
       label: "Idle (Standby)",
       desc: "Zero motor load, ambient temperature",
-      icon: <Pause className="w-3.5 h-3.5 text-slate-400" />,
-      color: "text-slate-300",
+      icon: <Pause className="w-3.5 h-3.5 text-slate-500" />,
+      color: "text-slate-800",
     },
     {
       id: "Maintenance",
       label: "Maintenance",
       desc: "Offline for preventive / corrective service",
-      icon: <Wrench className="w-3.5 h-3.5 text-rose-400" />,
-      color: "text-rose-400",
+      icon: <Wrench className="w-3.5 h-3.5 text-rose-600" />,
+      color: "text-rose-900",
     },
     {
       id: "Warning",
       label: "Warning",
       desc: "Anomalous vibration or thermal drift",
-      icon: <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />,
-      color: "text-amber-400",
+      icon: <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />,
+      color: "text-amber-900",
     },
   ];
 
@@ -126,17 +126,17 @@ export function MachineStatusDropdown({
           e.stopPropagation();
           setIsOpen((prev) => !prev);
         }}
-        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border transition-all cursor-pointer shadow-xs select-none ${getBadgeStyle()} ${
+        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border transition-all cursor-pointer shadow-xs select-none ${getBadgeStyle()} ${
           disabled ? "opacity-60 cursor-not-allowed" : ""
         }`}
         title="Click to change machine status (Running / Idle / Maintenance / Warning)"
       >
         {currentStatus === "Running" && (
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
         )}
-        {currentStatus === "Idle" && <Clock className="w-3.5 h-3.5 text-slate-400" />}
-        {currentStatus === "Maintenance" && <Wrench className="w-3.5 h-3.5 text-rose-400 animate-pulse" />}
-        {currentStatus === "Warning" && <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />}
+        {currentStatus === "Idle" && <Clock className="w-3.5 h-3.5 text-slate-500" />}
+        {currentStatus === "Maintenance" && <Wrench className="w-3.5 h-3.5 text-rose-600 animate-pulse" />}
+        {currentStatus === "Warning" && <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />}
 
         <span>{currentStatus}</span>
         <ChevronDown className={`w-3 h-3 transition-transform duration-200 opacity-70 ${isOpen ? "rotate-180" : ""}`} />
@@ -145,10 +145,9 @@ export function MachineStatusDropdown({
       {/* Dropdown Menu */}
       {isOpen && (
         <div
-          className="absolute left-0 z-50 mt-1.5 w-60 rounded-xl bg-slate-900 border border-slate-700/80 shadow-2xl p-1.5 backdrop-blur-md animate-in fade-in zoom-in-95 duration-150"
-          style={{ backgroundColor: "#0f172a" }}
+          className="absolute left-0 z-50 mt-1.5 w-64 rounded-xl bg-white border border-slate-200 shadow-2xl p-1.5 animate-in fade-in zoom-in-95 duration-150"
         >
-          <div className="px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-800">
+          <div className="px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-100">
             Switch Machine State
           </div>
           <div className="py-1 space-y-0.5">
@@ -161,19 +160,19 @@ export function MachineStatusDropdown({
                   onClick={(e) => handleSelect(opt.id, e)}
                   className={`w-full flex items-start gap-2.5 px-2.5 py-2 rounded-lg text-left transition-colors cursor-pointer ${
                     isSelected
-                      ? "bg-slate-800 text-white"
-                      : "hover:bg-slate-800/60 text-slate-300"
+                      ? "bg-slate-100 text-slate-900"
+                      : "hover:bg-slate-50 text-slate-700"
                   }`}
                 >
                   <div className="mt-0.5 shrink-0">{opt.icon}</div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className={`text-xs font-semibold ${opt.color}`}>
+                      <span className={`text-xs font-bold ${opt.color}`}>
                         {opt.label}
                       </span>
-                      {isSelected && <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0" />}
+                      {isSelected && <Check className="w-3.5 h-3.5 text-cyan-600 shrink-0" />}
                     </div>
-                    <p className="text-[10px] text-slate-400 leading-tight mt-0.5">
+                    <p className="text-[10px] text-slate-500 leading-tight mt-0.5 font-medium">
                       {opt.desc}
                     </p>
                   </div>

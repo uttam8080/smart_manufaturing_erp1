@@ -31,10 +31,10 @@ export function InventoryTable({
 }: InventoryTableProps) {
   if (items.length === 0) {
     return (
-      <div className="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 text-center space-y-2">
-        <Boxes className="w-8 h-8 text-slate-500 mx-auto" />
-        <h3 className="text-sm font-semibold text-white">No inventory items match your filter</h3>
-        <p className="text-xs text-slate-400">
+      <div className="p-8 rounded-2xl bg-white border border-slate-200 text-center space-y-2 shadow-sm">
+        <Boxes className="w-8 h-8 text-slate-400 mx-auto" />
+        <h3 className="text-sm font-bold text-slate-900">No inventory items match your filter</h3>
+        <p className="text-xs text-slate-500 font-medium">
           Try adjusting your search criteria or resetting your active filters.
         </p>
       </div>
@@ -42,19 +42,19 @@ export function InventoryTable({
   }
 
   return (
-    <div className="p-5 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-md space-y-4">
+    <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
       {/* Table Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h2 className="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <Boxes className="w-4 h-4 text-cyan-400" />
+          <h2 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
+            <Boxes className="w-4 h-4 text-cyan-600" />
             Inventory Stock Master
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
             Real-time material availability, reserved work order allocations & stock valuation
           </p>
         </div>
-        <span className="text-xs font-mono text-cyan-400/80">
+        <span className="text-xs font-mono font-semibold text-cyan-800">
           {items.length} Items Listed
         </span>
       </div>
@@ -63,7 +63,7 @@ export function InventoryTable({
       <div className="hidden md:block max-h-[520px] overflow-y-auto overflow-x-auto custom-scrollbar border border-slate-200 rounded-xl">
         <table className="w-full text-left text-xs">
           <thead className="sticky top-0 z-10 bg-slate-50/95 backdrop-blur-xs">
-            <tr className="border-b border-slate-200 text-slate-500 uppercase tracking-wider text-[10px]">
+            <tr className="border-b border-slate-200 text-slate-700 uppercase tracking-wider text-[10px]">
               <th className="py-3 px-3 font-semibold">Item Code & Name</th>
               <th className="py-3 px-3 font-semibold">Category</th>
               <th className="py-3 px-3 font-semibold">Warehouse</th>
@@ -79,28 +79,28 @@ export function InventoryTable({
             {items.map((item) => (
               <tr
                 key={item.id}
-                className="hover:bg-slate-800/40 transition-colors group"
+                className="hover:bg-slate-50/80 transition-colors group"
               >
                 {/* Code & Name */}
                 <td className="py-3.5 pr-3 whitespace-nowrap">
-                  <div className="font-mono font-bold text-cyan-400">
+                  <div className="font-mono font-bold text-cyan-800">
                     {item.itemCode}
                   </div>
-                  <div className="text-xs font-semibold text-slate-200">
+                  <div className="text-xs font-bold text-slate-900">
                     {item.itemName}
                   </div>
                 </td>
 
                 {/* Category */}
-                <td className="py-3.5 px-3 whitespace-nowrap text-slate-400">
-                  <span className="px-2 py-0.5 rounded-md bg-slate-950 border border-slate-800 text-[11px]">
+                <td className="py-3.5 px-3 whitespace-nowrap text-slate-700">
+                  <span className="px-2 py-0.5 rounded-md bg-slate-100 border border-slate-200 text-[11px] font-medium text-slate-700">
                     {item.category}
                   </span>
                 </td>
 
                 {/* Warehouse */}
                 <td className="py-3.5 px-3 whitespace-nowrap">
-                  <div className="text-slate-300 font-medium flex items-center gap-1">
+                  <div className="text-slate-900 font-medium flex items-center gap-1">
                     <Building2 className="w-3 h-3 text-slate-500" />
                     {item.warehouse}
                   </div>
@@ -110,14 +110,14 @@ export function InventoryTable({
                 </td>
 
                 {/* Available Quantity (Calculated) */}
-                <td className="py-3.5 px-3 text-right font-mono font-bold text-white whitespace-nowrap">
+                <td className="py-3.5 px-3 text-right font-mono font-bold text-slate-900 whitespace-nowrap">
                   <span
                     className={
                       item.status === "Critical"
-                        ? "text-rose-400 font-extrabold"
+                        ? "text-rose-700 font-extrabold"
                         : item.status === "Low Stock"
-                        ? "text-amber-400"
-                        : "text-emerald-400"
+                        ? "text-amber-700 font-bold"
+                        : "text-emerald-700 font-bold"
                     }
                   >
                     {item.availableQuantity.toLocaleString()} {item.unit}
@@ -125,17 +125,17 @@ export function InventoryTable({
                 </td>
 
                 {/* Reorder Level */}
-                <td className="py-3.5 px-3 text-right font-mono text-slate-400 whitespace-nowrap">
+                <td className="py-3.5 px-3 text-right font-mono text-slate-600 whitespace-nowrap">
                   {item.reorderLevel.toLocaleString()} {item.unit}
                 </td>
 
                 {/* Unit Cost */}
-                <td className="py-3.5 px-3 text-right font-mono text-slate-400 whitespace-nowrap">
+                <td className="py-3.5 px-3 text-right font-mono text-slate-600 whitespace-nowrap">
                   ₹{item.unitCost.toFixed(2)}
                 </td>
 
                 {/* Stock Value (Calculated) */}
-                <td className="py-3.5 px-3 text-right font-mono font-bold text-slate-100 whitespace-nowrap">
+                <td className="py-3.5 px-3 text-right font-mono font-bold text-slate-900 whitespace-nowrap">
                   ₹{item.stockValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </td>
 
@@ -150,7 +150,7 @@ export function InventoryTable({
                     {/* View Details */}
                     <button
                       onClick={() => onViewItem(item)}
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-cyan-950/60 hover:text-cyan-400 hover:border-cyan-800 text-slate-300 border border-slate-700 transition"
+                      className="p-1.5 rounded-lg bg-slate-50 hover:bg-cyan-50 hover:text-cyan-800 hover:border-cyan-300 text-slate-600 border border-slate-200 transition shadow-xs"
                       title="View Stock Movement & Transaction Details"
                       aria-label="View Item"
                     >
@@ -160,7 +160,7 @@ export function InventoryTable({
                     {/* Adjust Stock */}
                     <button
                       onClick={() => onAdjustStock(item)}
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 hover:text-white text-slate-300 border border-slate-700 transition"
+                      className="p-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 hover:text-slate-900 text-slate-600 border border-slate-200 transition shadow-xs"
                       title="Adjust Physical Stock Count"
                       aria-label="Adjust Stock"
                     >
@@ -170,7 +170,7 @@ export function InventoryTable({
                     {/* Transfer Stock */}
                     <button
                       onClick={() => onTransferStock(item)}
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-blue-950/60 hover:text-blue-400 hover:border-blue-800 text-slate-300 border border-slate-700 transition"
+                      className="p-1.5 rounded-lg bg-slate-50 hover:bg-blue-50 hover:text-blue-800 hover:border-blue-300 text-slate-600 border border-slate-200 transition shadow-xs"
                       title="Transfer Between Warehouses"
                       aria-label="Transfer Stock"
                     >
@@ -180,7 +180,7 @@ export function InventoryTable({
                     {/* Create Purchase Request */}
                     <button
                       onClick={() => onCreatePurchaseRequest(item)}
-                      className="p-1.5 rounded-lg bg-slate-800 hover:bg-emerald-950/60 hover:text-emerald-400 hover:border-emerald-800 text-slate-300 border border-slate-700 transition"
+                      className="p-1.5 rounded-lg bg-slate-50 hover:bg-emerald-50 hover:text-emerald-800 hover:border-emerald-300 text-slate-600 border border-slate-200 transition shadow-xs"
                       title="Create Purchase Request for Procurement"
                       aria-label="Purchase Request"
                     >
@@ -199,17 +199,17 @@ export function InventoryTable({
         {items.map((item) => (
           <div
             key={item.id}
-            className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-3"
+            className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm space-y-3"
           >
             <div className="flex items-start justify-between gap-2">
               <div>
-                <span className="font-mono text-xs font-bold text-cyan-400">
+                <span className="font-mono text-xs font-bold text-cyan-800">
                   {item.itemCode}
                 </span>
-                <h3 className="text-sm font-semibold text-white mt-0.5">
+                <h3 className="text-sm font-bold text-slate-900 mt-0.5">
                   {item.itemName}
                 </h3>
-                <span className="text-[11px] text-slate-400">
+                <span className="text-[11px] text-slate-500">
                   {item.warehouse} • {item.locationBin}
                 </span>
               </div>
@@ -217,18 +217,18 @@ export function InventoryTable({
             </div>
 
             {/* Calculations Breakdown */}
-            <div className="grid grid-cols-2 gap-2 text-xs py-2 border-y border-slate-800/80">
+            <div className="grid grid-cols-2 gap-2 text-xs py-2 border-y border-slate-200">
               <div>
-                <span className="text-[10px] uppercase text-slate-500 block">Reorder Lvl</span>
-                <span className="font-mono text-slate-400">
+                <span className="text-[10px] uppercase text-slate-500 font-semibold block">Reorder Lvl</span>
+                <span className="font-mono text-slate-700 font-medium">
                   {item.reorderLevel.toLocaleString()} {item.unit}
                 </span>
               </div>
               <div className="text-right">
-                <span className="text-[10px] uppercase text-slate-500 block">Available Stock</span>
+                <span className="text-[10px] uppercase text-slate-500 font-semibold block">Available Stock</span>
                 <span
                   className={`font-mono font-bold ${
-                    item.status === "Critical" ? "text-rose-400" : "text-emerald-400"
+                    item.status === "Critical" ? "text-rose-700" : "text-emerald-700"
                   }`}
                 >
                   {item.availableQuantity.toLocaleString()} {item.unit}
@@ -237,8 +237,8 @@ export function InventoryTable({
             </div>
 
             <div className="flex justify-between items-center text-xs">
-              <span className="text-slate-400">Stock Value:</span>
-              <span className="font-mono font-bold text-white">
+              <span className="text-slate-600 font-medium">Stock Value:</span>
+              <span className="font-mono font-bold text-slate-900">
                 ₹{item.stockValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
@@ -247,28 +247,28 @@ export function InventoryTable({
             <div className="flex items-center justify-end gap-2 pt-1">
               <button
                 onClick={() => onViewItem(item)}
-                className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white border border-slate-700 flex items-center gap-1"
+                className="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-800 border border-slate-200 flex items-center gap-1 transition"
               >
-                <Eye className="w-3.5 h-3.5 text-cyan-400" />
+                <Eye className="w-3.5 h-3.5 text-cyan-700" />
                 <span>View</span>
               </button>
               <button
                 onClick={() => onAdjustStock(item)}
-                className="p-1.5 rounded-lg bg-slate-800 text-slate-300 border border-slate-700"
+                className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition"
                 title="Adjust"
               >
                 <Sliders className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => onTransferStock(item)}
-                className="p-1.5 rounded-lg bg-slate-800 text-slate-300 border border-slate-700"
+                className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition"
                 title="Transfer"
               >
                 <ArrowLeftRight className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => onCreatePurchaseRequest(item)}
-                className="p-1.5 rounded-lg bg-slate-800 text-emerald-400 border border-slate-700"
+                className="p-1.5 rounded-lg bg-slate-100 hover:bg-emerald-50 text-emerald-700 border border-slate-200 transition"
                 title="Purchase Request"
               >
                 <ShoppingCart className="w-3.5 h-3.5" />
